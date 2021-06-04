@@ -13,7 +13,7 @@ public class RightHandRay : MonoBehaviour
     // boolean to determine if line renderer is enabled or disabled
     public bool toggled = false;
 
-    private float handRight = OVRInput.Get(OVRInput.Axis1D.SecondariHandTrigger);
+    private float handRight = OVRInput.Get(OVRInput.Axis1D.SecondaryHandTrigger);
 
     private GameObject pointedObject;
 
@@ -30,7 +30,7 @@ public class RightHandRay : MonoBehaviour
     void Update()
     {
         // update value of handRight every frame with new value from trigger    
-        handRight = OVRInput.Get(OVRInput.Axis1D.SecondariHandTrigger);
+        handRight = OVRInput.Get(OVRInput.Axis1D.SecondaryHandTrigger);
 
         if( handRight > 0.9){
             toggled = true;
@@ -53,7 +53,7 @@ public class RightHandRay : MonoBehaviour
         RaycastHit hit;
         Ray rayLineOut = new Ray(targetPosition, direction);
 
-        Vector3 endPosition = targetPosition + (length * directino);
+        Vector3 endPosition = targetPosition + (length * direction);
 
         if(Physics.Raycast(rayLineOut, out hit)){
             endPosition = hit.point;
