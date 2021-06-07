@@ -1,9 +1,10 @@
 ﻿public enum HandGestures
 {
 	None,
-	Rock,
+	Fist,
 	Gun,
 	Point,
-	OK,
-	ThumbUp
+	RocknRoll,
+	ThumbsUp,
+	Victory
 }

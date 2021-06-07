@@ -2,8 +2,8 @@
 {
 	public bool primaryButton { get; private set; }
 	public bool secondaryButton { get; private set; }
-	public bool triggerButton { get; private set; }
-	public bool gripButton { get; private set; }
+	public float triggerButton { get; private set; }
+	public float gripButton { get; private set; }
 	public HandGestures handGestures { get; private set; }
 
 	public ControllerData()
@@ -11,7 +11,7 @@
 
 	}
 
-	public ControllerData(bool primaryButtonValue, bool secondaryButtonValue, bool triggerButtonValue, bool gripButtonValue)
+	public ControllerData(bool primaryButtonValue, bool secondaryButtonValue, float triggerButtonValue, float gripButtonValue)
 	{
 		SetPrimaryButton(primaryButtonValue);
 		SetSecondaryButton(secondaryButtonValue);
@@ -19,13 +19,22 @@
 		SetGripButton(gripButtonValue);
 		SetHandGestures(HandGestures.None);
 	}
-	public ControllerData(bool primaryButtonValue, bool secondaryButtonValue, bool triggerButtonValue, bool gripButtonValue, HandGestures handGesturesValue)
+	public ControllerData(bool primaryButtonValue, bool secondaryButtonValue, float triggerButtonValue, float gripButtonValue, HandGestures handGesturesValue)
 	{
 		SetPrimaryButton(primaryButtonValue);
 		SetSecondaryButton(secondaryButtonValue);
 		SetTriggerButton(triggerButtonValue);
 		SetGripButton(gripButtonValue);
 		SetHandGestures(handGesturesValue);
+	}
+
+	public ControllerData(ControllerData value)
+	{
+		primaryButton = value.primaryButton;
+		secondaryButton = value.secondaryButton;
+		triggerButton = value.triggerButton;
+		gripButton = value.gripButton;
+		handGestures = value.handGestures;
 	}
 
 	public void SetPrimaryButton(bool value)
@@ -36,11 +45,11 @@
 	{
 		secondaryButton = value;
 	}
-	public void SetTriggerButton(bool value)
+	public void SetTriggerButton(float value)
 	{
 		triggerButton = value;
 	}
-	public void SetGripButton(bool value)
+	public void SetGripButton(float value)
 	{
 		gripButton = value;
 	}
