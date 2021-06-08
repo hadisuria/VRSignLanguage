@@ -5,6 +5,8 @@ using UnityEngine;
 public class RightHandRay : MonoBehaviour
 {
 
+    [SerializeField] private VRInputHandler inputHandler;
+
     public LineRenderer rightHandRayLine;
 
     public float lineWidth = 0.1f;
@@ -13,7 +15,8 @@ public class RightHandRay : MonoBehaviour
     // boolean to determine if line renderer is enabled or disabled
     public bool toggled = false;
 
-    private float handRight = OVRInput.Get(OVRInput.Axis1D.SecondaryHandTrigger);
+    private float handRight = inputHandler.GetLeftHandController().triggerButton;
+    // private float handRight = OVRInput.Get(OVRInput.Axis1D.SecondaryHandTrigger); // old code style
 
     private GameObject pointedObject;
 
@@ -30,7 +33,8 @@ public class RightHandRay : MonoBehaviour
     void Update()
     {
         // update value of handRight every frame with new value from trigger    
-        handRight = OVRInput.Get(OVRInput.Axis1D.SecondaryHandTrigger);
+        handRight = inputHandler.GetLeftHandController().triggerButton;
+        // handRight = OVRInput.Get(OVRInput.Axis1D.SecondaryHandTrigger);
 
         if( handRight > 0.9){
             toggled = true;
