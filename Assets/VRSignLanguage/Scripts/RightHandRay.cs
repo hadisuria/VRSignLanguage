@@ -15,7 +15,7 @@ public class RightHandRay : MonoBehaviour
     // boolean to determine if line renderer is enabled or disabled
     public bool toggled = false;
 
-    private float handRight = inputHandler.GetLeftHandController().triggerButton;
+    private float handRight;
     // private float handRight = OVRInput.Get(OVRInput.Axis1D.SecondaryHandTrigger); // old code style
 
     private GameObject pointedObject;
