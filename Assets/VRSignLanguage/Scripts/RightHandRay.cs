@@ -63,7 +63,11 @@ public class RightHandRay : MonoBehaviour
             endPosition = hit.point;
 
             // set the game object to the gameObject that the raycast hit
-            pointedObject = hit.collider.gameObject; 
+            pointedObject = hit.collider.gameObject;
+            if(pointedObject.TryGetComponent<IInteractableObject>(out var target))
+			{
+                target.ExecuteInteractHit();
+			}
 
         }    
 

@@ -1,5 +1,8 @@
-﻿public class ControllerData
+﻿using UnityEngine;
+
+public class ControllerData
 {
+	public Vector3 controllerPos { get; private set; }
 	public bool primaryButton { get; private set; }
 	public bool secondaryButton { get; private set; }
 	public float triggerButton { get; private set; }
@@ -11,16 +14,18 @@
 
 	}
 
-	public ControllerData(bool primaryButtonValue, bool secondaryButtonValue, float triggerButtonValue, float gripButtonValue)
+	public ControllerData(Vector3 pos, bool primaryButtonValue, bool secondaryButtonValue, float triggerButtonValue, float gripButtonValue)
 	{
+		SetControllerPos(pos);
 		SetPrimaryButton(primaryButtonValue);
 		SetSecondaryButton(secondaryButtonValue);
 		SetTriggerButton(triggerButtonValue);
 		SetGripButton(gripButtonValue);
 		SetHandGestures(HandGestures.None);
 	}
-	public ControllerData(bool primaryButtonValue, bool secondaryButtonValue, float triggerButtonValue, float gripButtonValue, HandGestures handGesturesValue)
+	public ControllerData(Vector3 pos, bool primaryButtonValue, bool secondaryButtonValue, float triggerButtonValue, float gripButtonValue, HandGestures handGesturesValue)
 	{
+		SetControllerPos(pos);
 		SetPrimaryButton(primaryButtonValue);
 		SetSecondaryButton(secondaryButtonValue);
 		SetTriggerButton(triggerButtonValue);
@@ -37,6 +42,10 @@
 		handGestures = value.handGestures;
 	}
 
+	public void SetControllerPos(Vector3 value)
+	{
+		controllerPos = value;
+	}
 	public void SetPrimaryButton(bool value)
 	{
 		primaryButton = value;

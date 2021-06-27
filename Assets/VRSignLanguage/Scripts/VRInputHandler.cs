@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class VRInputHandler : MonoBehaviour
@@ -20,20 +19,22 @@ public class VRInputHandler : MonoBehaviour
 	private void Update()
 	{
 		//set input for left controller
+		leftController.SetControllerPos(OVRInput.GetLocalControllerPosition(OVRInput.Controller.LTouch));
 		leftController.SetPrimaryButton(OVRInput.Get(OVRInput.Button.One, OVRInput.Controller.LTouch));
 		leftController.SetSecondaryButton(OVRInput.Get(OVRInput.Button.Two, OVRInput.Controller.LTouch));
 		leftController.SetTriggerButton(OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger, OVRInput.Controller.LTouch));
 		leftController.SetGripButton(OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger, OVRInput.Controller.LTouch));
-		
+
 		//set input for right controller
+		leftController.SetControllerPos(OVRInput.GetLocalControllerPosition(OVRInput.Controller.RTouch));
 		rightController.SetPrimaryButton(OVRInput.Get(OVRInput.Button.One, OVRInput.Controller.RTouch));
 		rightController.SetSecondaryButton(OVRInput.Get(OVRInput.Button.Two, OVRInput.Controller.RTouch));
 		rightController.SetTriggerButton(OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger, OVRInput.Controller.RTouch));
 		rightController.SetGripButton(OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger, OVRInput.Controller.RTouch));
 
 		//text for current input received
-		inputText.text = $"Left Thumb 1 : {leftController.primaryButton} \nLeft Thumb 2 : {leftController.secondaryButton} \nLeft Index Trigger : {leftController.triggerButton} \nLeft Hand Trigger : {leftController.gripButton}" +
-						$"\nRight Thumb 1 : {rightController.primaryButton} \nRight Thumb 2 : {rightController.secondaryButton} \nRight Index Trigger : {rightController.triggerButton} \nRight Hand Trigger : {rightController.gripButton}";
+		inputText.text = $"Left Thumb 1 : {leftController.primaryButton} \nLeft Thumb 2 : {leftController.secondaryButton} \nLeft Index Trigger : {leftController.triggerButton} \nLeft Hand Trigger : {leftController.gripButton} \nLeft Controller Pos : {leftController.controllerPos}" +
+						$"\nRight Thumb 1 : {rightController.primaryButton} \nRight Thumb 2 : {rightController.secondaryButton} \nRight Index Trigger : {rightController.triggerButton} \nRight Hand Trigger : {rightController.gripButton} \nRight Controller Pos : {rightController.controllerPos}";
 
 		//set each hand gestures
 		leftController.SetHandGestures(GetHandGestures(leftController.primaryButton, leftController.triggerButton, leftController.gripButton));
