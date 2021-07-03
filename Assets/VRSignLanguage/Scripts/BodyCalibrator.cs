@@ -5,18 +5,28 @@ public class BodyCalibrator : MonoBehaviour
 	[SerializeField] private VRInputHandler inputHandler;
 	[SerializeField] private GameObject playerHMD;
 
-	public (float bodyHeight, float handLength) CalibratePosition()
-	{
-		float bodyHeight = GetBodyHeight(playerHMD.transform.position);
-		float handLength = GetHandLength(playerHMD.transform.position);
-
-		return (bodyHeight: bodyHeight, handLength: handLength);
-	}
-
-	private float GetHandLength(Vector3 headPos)
+	public (float bodyHeight, float handLength, Vector3 shoulderOffsetLeft, Vector3 shoulderOffsetRight, float bellyHeight) CalibratePosition()
 	{
 		var leftHand = inputHandler.GetLeftHandController().controllerPos;
 		var rightHand = inputHandler.GetRightHandController().controllerPos;
+
+		float bodyHeight = GetBodyHeight(playerHMD.transform.position);
+		float handLength = GetHandLength(playerHMD.transform.position, leftHand, rightHand);
+		(Vector3 shoulderOffsetLeft, Vector3 shoulderOffsetRight) = GetShoulderPosition(playerHMD.transform.position, leftHand, rightHand);
+		float bellyHeight = GetBellyHeight(shoulderOffsetLeft, handLength);
+
+		return (
+			bodyHeight, 
+			handLength, 
+			shoulderOffsetLeft, 
+			shoulderOffsetRight, 
+			bellyHeight
+		);
+	}
+
+	// calculate hand length
+	private float GetHandLength(Vector3 headPos, Vector3 leftHand, Vector3 rightHand)
+	{
 
 		float leftHandLength = leftHand.z - headPos.z;
 		float rightHandLength = rightHand.z - headPos.z;
@@ -24,8 +34,32 @@ public class BodyCalibrator : MonoBehaviour
 		return Mathf.Abs(leftHandLength + rightHandLength) / 2f;
 	}
 	
+	// height
 	private float GetBodyHeight(Vector3 headPos)
 	{
 		return headPos.y;
 	}
+
+	// Get Shoulder Position
+	private (Vector3 left, Vector3 right) GetShoulderPosition(Vector3 headPos, Vector3 leftHand, Vector3 rightHand)
+	{
+
+		float bodyWidth = Mathf.Abs(leftHand.x - rightHand.x);
+		float shoulderHeight = Mathf.Abs(leftHand.y + rightHand.y) / 2;
+
+		// calculate shoulder position
+		Vector3 shoulderPositionLeft = new Vector3(leftHand.x, shoulderHeight, headPos.z);
+		Vector3 shoulderPositionRight = new Vector3(rightHand.x, shoulderHeight, headPos.z);
+
+		return (left: shoulderPositionLeft, right: shoulderPositionRight);
+	}
+
+
+	// Belly height
+	private float GetBellyHeight(Vector3 shoulderOffset, float handLength) {
+		// Estimate belly height based on shoulder position and handlength divided by 2
+
+		return (shoulderOffset.y - (handLength / 2));
+	}
+
 }
