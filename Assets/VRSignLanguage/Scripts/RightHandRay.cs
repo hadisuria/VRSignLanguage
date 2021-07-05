@@ -33,7 +33,7 @@ public class RightHandRay : MonoBehaviour
     void Update()
     {
         // update value of handRight every frame with new value from trigger    
-        handRight = inputHandler.GetLeftHandController().triggerButton;
+        handRight = inputHandler.GetRightHandController().triggerButton;
         // handRight = OVRInput.Get(OVRInput.Axis1D.SecondaryHandTrigger);
 
         if( handRight > 0.9){
