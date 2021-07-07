@@ -16,7 +16,7 @@ public class HandAnimManager : MonoBehaviour
 
 	private const float changeValue = .1f;
 	private const float lowThreshold = .2f;
-	private const float highThreshold = .8f;
+	private const float highThreshold = .9f;
 
 	// Start is called before the first frame update
 	//void Start()

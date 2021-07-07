@@ -13,7 +13,7 @@ public class VRInputHandler : MonoBehaviour
 	//public event Action<ControllerData> RightControllerInput;
 
 	private const float lowThreshold = .2f;
-	private const float highThreshold = .8f;
+	private const float highThreshold = .9f;
 
 	// Update is called once per frame
 	private void Update()
@@ -26,7 +26,7 @@ public class VRInputHandler : MonoBehaviour
 		leftController.SetGripButton(OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger, OVRInput.Controller.LTouch));
 
 		//set input for right controller
-		leftController.SetControllerPos(OVRInput.GetLocalControllerPosition(OVRInput.Controller.RTouch));
+		rightController.SetControllerPos(OVRInput.GetLocalControllerPosition(OVRInput.Controller.RTouch));
 		rightController.SetPrimaryButton(OVRInput.Get(OVRInput.Button.One, OVRInput.Controller.RTouch));
 		rightController.SetSecondaryButton(OVRInput.Get(OVRInput.Button.Two, OVRInput.Controller.RTouch));
 		rightController.SetTriggerButton(OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger, OVRInput.Controller.RTouch));
