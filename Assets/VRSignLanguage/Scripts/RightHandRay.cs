@@ -7,7 +7,7 @@ public class RightHandRay : MonoBehaviour
 
     [SerializeField] private VRInputHandler inputHandler;
 
-    public LineRenderer rightHandRayLine;
+    public LineRenderer rightHandRayLine = null;
 
     public float lineWidth = 0.1f;
     public float lineMaxLength = 1f;
@@ -32,6 +32,7 @@ public class RightHandRay : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         // update value of handRight every frame with new value from trigger    
         handRight = inputHandler.GetLeftHandController().triggerButton;
         // handRight = OVRInput.Get(OVRInput.Axis1D.SecondaryHandTrigger);
