@@ -20,6 +20,11 @@ public class CalibrateMenuController : MonoBehaviour
 
 	public void ShowCalibrationMenu()
 	{
+        if(CalibrateSaveSytem.LoadCalibratedData() == null){
+            closeButton.gameObject.SetActive(false);
+        } else {
+            closeButton.gameObject.SetActive(true);
+        }
         isActive = true;
         gameObject.SetActive(isActive);
     }
