@@ -57,7 +57,7 @@ public class HandAnimManager : MonoBehaviour
 
 	private void UpdateHandAnimation(ControllerData controller)
 	{
-		if (controller.primaryButton)
+		if (controller.thumbstickTouch)
 			UpdateAnimParamDictionary("Button", 1f);
 			//handAnimator.SetFloat("Button", 1f);
 		else

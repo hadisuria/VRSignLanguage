@@ -2,10 +2,10 @@
 
 public class CenterPointTeleporter : MonoBehaviour, IInteractableObject
 {
-	[SerializeField] private GameObject player;
+	[SerializeField] private Transform player;
 
 	public void ExecuteInteractHit()
 	{
-		player.transform.position = new Vector3(transform.position.x, player.transform.position.y, transform.position.z);
+		player.position = new Vector3(transform.position.x, player.position.y, transform.position.z);
 	}
 }

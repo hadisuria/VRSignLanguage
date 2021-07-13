@@ -16,7 +16,7 @@ public class RightHandRay : MonoBehaviour
     // boolean to determine if line renderer is enabled or disabled
     public bool toggled = false;
 
-    private float handRight;
+    private ControllerData handRight;
     // private float handRight = OVRInput.Get(OVRInput.Axis1D.SecondaryHandTrigger); // old code style
 
     private GameObject pointedObject;
@@ -34,10 +34,10 @@ public class RightHandRay : MonoBehaviour
     void Update()
     {
         // update value of handRight every frame with new value from trigger    
-        handRight = inputHandler.GetRightHandController().triggerButton;
+        handRight = inputHandler.GetRightHandController();
         // handRight = OVRInput.Get(OVRInput.Axis1D.SecondaryHandTrigger);
 
-        if( handRight > 0.9){
+        if( handRight.primaryButton ){
             toggled = true;
              rightHandRayLine.enabled = true;
 
@@ -48,12 +48,12 @@ public class RightHandRay : MonoBehaviour
 
         if(toggled){
             // render raycast if the trigger is pulled
-            renderRayLine(transform.position, transform.forward, lineMaxLength);
+            renderRayLine(transform.position, transform.forward, lineMaxLength, handRight.triggerButton > .9f);
         }
     }
 
 
-    private void renderRayLine(Vector3 targetPosition, Vector3 direction, float length){
+    private void renderRayLine(Vector3 targetPosition, Vector3 direction, float length, bool interacting){
         // set raycast hit
         RaycastHit hit;
         Ray rayLineOut = new Ray(targetPosition, direction);
@@ -65,12 +65,11 @@ public class RightHandRay : MonoBehaviour
 
             // set the game object to the gameObject that the raycast hit
             pointedObject = hit.collider.gameObject;
-            if(pointedObject.TryGetComponent<IInteractableObject>(out var target))
+            if(pointedObject.TryGetComponent<IInteractableObject>(out var target) && interacting)
 			{
                 target.ExecuteInteractHit();
 			}
-
-        }    
+        }
 
         // update the line renderer that declared at the top
         rightHandRayLine.SetPosition(0, targetPosition);

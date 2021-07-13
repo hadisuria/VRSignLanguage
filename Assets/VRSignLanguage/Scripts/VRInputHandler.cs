@@ -24,6 +24,7 @@ public class VRInputHandler : MonoBehaviour
 		leftController.SetSecondaryButton(OVRInput.Get(OVRInput.Button.Two, OVRInput.Controller.LTouch));
 		leftController.SetTriggerButton(OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger, OVRInput.Controller.LTouch));
 		leftController.SetGripButton(OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger, OVRInput.Controller.LTouch));
+		leftController.SetThumbTouchValue(OVRInput.Get(OVRInput.Touch.PrimaryThumbstick, OVRInput.Controller.LTouch));
 
 		//set input for right controller
 		rightController.SetControllerPos(OVRInput.GetLocalControllerPosition(OVRInput.Controller.RTouch));
@@ -31,6 +32,7 @@ public class VRInputHandler : MonoBehaviour
 		rightController.SetSecondaryButton(OVRInput.Get(OVRInput.Button.Two, OVRInput.Controller.RTouch));
 		rightController.SetTriggerButton(OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger, OVRInput.Controller.RTouch));
 		rightController.SetGripButton(OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger, OVRInput.Controller.RTouch));
+		rightController.SetThumbTouchValue(OVRInput.Get(OVRInput.Touch.PrimaryThumbstick, OVRInput.Controller.RTouch));
 
 		//text for current input received
 		inputText.text = $"Left Thumb 1 : {leftController.primaryButton} \nLeft Thumb 2 : {leftController.secondaryButton} \nLeft Index Trigger : {leftController.triggerButton} \nLeft Hand Trigger : {leftController.gripButton} \nLeft Controller Pos : {leftController.controllerPos}" +
