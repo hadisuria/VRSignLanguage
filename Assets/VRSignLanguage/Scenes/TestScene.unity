@@ -1136,7 +1136,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_renderer: {fileID: 301995107}
   m_maskType: 0
-  _SortingLayer: 0
   _SortingLayerID: 0
   _SortingOrder: 0
 --- !u!222 &301995106
@@ -2088,7 +2087,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_renderer: {fileID: 497691070}
   m_maskType: 0
-  _SortingLayer: 0
   _SortingLayerID: 0
   _SortingOrder: 0
 --- !u!222 &497691069
@@ -3092,6 +3090,9 @@ MonoBehaviour:
   rightHandRayLine: {fileID: 659207775}
   lineWidth: 0.1
   lineMaxLength: 5
+  whatIsRayTarget:
+    serializedVersion: 2
+    m_Bits: 256
   toggled: 0
 --- !u!4 &659207780 stripped
 Transform:
@@ -3181,7 +3182,7 @@ GameObject:
   - component: {fileID: 692326138}
   - component: {fileID: 692326137}
   - component: {fileID: 692326136}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CalibrateBG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4592,7 +4593,7 @@ GameObject:
   - component: {fileID: 960727707}
   - component: {fileID: 960727706}
   - component: {fileID: 960727705}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4706,7 +4707,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_renderer: {fileID: 960727707}
   m_maskType: 0
-  _SortingLayer: 0
   _SortingLayerID: 0
   _SortingOrder: 0
 --- !u!222 &960727706
@@ -4902,7 +4902,7 @@ GameObject:
   - component: {fileID: 972862289}
   - component: {fileID: 972862288}
   - component: {fileID: 972862287}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CenterPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5220,7 +5220,7 @@ GameObject:
   - component: {fileID: 1080395011}
   - component: {fileID: 1080395010}
   - component: {fileID: 1080395012}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CalibrateButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6055,7 +6055,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_renderer: {fileID: 1380351077}
   m_maskType: 0
-  _SortingLayer: 0
   _SortingLayerID: 0
   _SortingOrder: 0
 --- !u!222 &1380351076
@@ -6869,7 +6868,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_renderer: {fileID: 1744456621}
   m_maskType: 0
-  _SortingLayer: 0
   _SortingLayerID: 0
   _SortingOrder: 0
 --- !u!222 &1744456620
@@ -7627,10 +7625,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8391222552659086748, guid: 135f51b1c777da94383cfc9c5056cf63,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: -516098083770646512, guid: 135f51b1c777da94383cfc9c5056cf63,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 135f51b1c777da94383cfc9c5056cf63,
         type: 3}
       propertyPath: m_Name
       value: whiteboard (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 135f51b1c777da94383cfc9c5056cf63,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4083501151425157549, guid: 135f51b1c777da94383cfc9c5056cf63,
         type: 3}
