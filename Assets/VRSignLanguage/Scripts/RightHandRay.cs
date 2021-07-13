@@ -11,7 +11,8 @@ public class RightHandRay : MonoBehaviour
 
     public float lineWidth = 0.1f;
     public float lineMaxLength = 1f;
-
+    // which layer to be hit by raycast
+    [SerializeField] private LayerMask whatIsRayTarget;
     // boolean to determine if line renderer is enabled or disabled
     public bool toggled = false;
 
@@ -59,7 +60,7 @@ public class RightHandRay : MonoBehaviour
 
         Vector3 endPosition = targetPosition + (length * direction);
 
-        if(Physics.Raycast(rayLineOut, out hit)){
+        if(Physics.Raycast(rayLineOut, out hit, whatIsRayTarget)){
             endPosition = hit.point;
 
             // set the game object to the gameObject that the raycast hit
