@@ -14,7 +14,7 @@ public class HandAnimManager : MonoBehaviour
 	[SerializeField] private Animator handAnimator;
 	private Dictionary<string, float> animatorParametersList = new Dictionary<string, float>();
 
-	private const float changeValue = .1f;
+	private const float changeValue = .125f;
 	private const float lowThreshold = .2f;
 	private const float highThreshold = .9f;
 
