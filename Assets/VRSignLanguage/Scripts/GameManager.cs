@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
 
 	private void Start()
 	{
-		CalibrateSaveSytem.Init();
+		SaveSystem.Init();
 		calibrateMenu.CalibrateMenuHit += ShowCalibrationMenu;
 		Load();
 	} 
@@ -47,13 +47,13 @@ public class GameManager : MonoBehaviour
 	private void SaveCalibratedData(SavedCalibratedData savedCalibratedDataObj)
 	{
 		string json = JsonUtility.ToJson(savedCalibratedDataObj);
-		CalibrateSaveSytem.SaveCalibratedData(json);
-
+		SaveSystem.SaveData(json, SaveSystem.SAVE_CALIBRATION);
 	}
 
 	private void Load()
 	{
-		string saveString = CalibrateSaveSytem.LoadCalibratedData();
+		// load the callibrated data if any
+		string saveString = SaveSystem.LoadData(SaveSystem.SAVE_CALIBRATION);
 		if(saveString != null)
 		{
 			SavedCalibratedData savedCalibratedDataObj = JsonUtility.FromJson<SavedCalibratedData>(saveString);
