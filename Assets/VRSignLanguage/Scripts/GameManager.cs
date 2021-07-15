@@ -83,14 +83,6 @@ public class GameManager : MonoBehaviour
 		leftShoulderOffset = calibratedValue.shoulderOffsetLeft;
 		rightShoulderOffset = calibratedValue.shoulderOffsetRight;
 
-		// Save calibrated data to json format
-		SavedCalibratedData savedCalibratedDataObj = new SavedCalibratedData(
-				maxHandDistance, 
-				headLevelHeight, 
-				bellyHeight, 
-				leftShoulderOffset, 
-				rightShoulderOffset
-			);
 		// Store calibrated data to local variable
 		savedCalibratedData = new SavedCalibratedData(
 				maxHandDistance, 
@@ -100,7 +92,7 @@ public class GameManager : MonoBehaviour
 				rightShoulderOffset
 			);
 
-		SaveCalibratedData(savedCalibratedDataObj);
+		SaveCalibratedData(savedCalibratedData);
 
 		// visualize calibrated pos using simple game object
 		// index 0 = player hmd pos
