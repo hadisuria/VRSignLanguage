@@ -13,6 +13,9 @@ public class GameManager : MonoBehaviour
 	private float bellyHeight;
 	private Vector3 leftShoulderOffset;
 	private Vector3 rightShoulderOffset;
+	
+	// To store saved / loaded calibratedData
+	private SavedCalibratedData savedCalibratedData;
 
 	private void Start()
 	{
@@ -57,6 +60,8 @@ public class GameManager : MonoBehaviour
 		if(saveString != null)
 		{
 			SavedCalibratedData savedCalibratedDataObj = JsonUtility.FromJson<SavedCalibratedData>(saveString);
+			// Assign data to saved calibrated data
+			savedCalibratedData = new SavedCalibratedData(savedCalibratedDataObj);
 		}
 		else
 		{
@@ -80,7 +85,19 @@ public class GameManager : MonoBehaviour
 
 		// Save calibrated data to json format
 		SavedCalibratedData savedCalibratedDataObj = new SavedCalibratedData(
-			maxHandDistance, headLevelHeight, bellyHeight, leftShoulderOffset, rightShoulderOffset
+				maxHandDistance, 
+				headLevelHeight, 
+				bellyHeight, 
+				leftShoulderOffset, 
+				rightShoulderOffset
+			);
+		// Store calibrated data to local variable
+		savedCalibratedData = new SavedCalibratedData(
+				maxHandDistance, 
+				headLevelHeight, 
+				bellyHeight, 
+				leftShoulderOffset, 
+				rightShoulderOffset
 			);
 
 		SaveCalibratedData(savedCalibratedDataObj);
