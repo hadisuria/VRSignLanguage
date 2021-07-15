@@ -1,23 +1,66 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class MainMenu : MonoBehaviour
+public class MainMenu : MonoBehaviour, IBoardMenu
 {
-    // Start is called before the first frame update
+	#region IBoardMenu
+	public BoardMenuID menuID { get; } = BoardMenuID.MainMenu;
+	public event Action<BoardMenuID> OnRequestingOpenMenu;
+	#endregion
 
-    [SerializeField] bool isActive;
-    
-    
-    void Start()
-    {
+	private bool initalized = false;
+	[SerializeField] MenuButton dictionaryButton;
+	[SerializeField] MenuButton learnButton;
+	[SerializeField] MenuButton inputWordButton;
+	[SerializeField] MenuButton exitButton;
 
-    }
+	public void Initialize()
+	{
+		if (!initalized)
+		{
+			dictionaryButton.OnButtonHit += DictionaryButton_OnButtonHit; ;
+			learnButton.OnButtonHit += LearnButton_OnButtonHit; ;
+			inputWordButton.OnButtonHit += InputWordButton_OnButtonHit; ;
+			exitButton.OnButtonHit += ExitGame;
+			initalized = true;
+		}
+	}
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+	public void Hide()
+	{
+		gameObject.SetActive(false);
+	}
+
+	public void Show()
+	{
+		gameObject.SetActive(true);
+	}
+
+	private void InputWordButton_OnButtonHit()
+	{
+		OnRequestingOpenMenu?.Invoke(BoardMenuID.InputWordMenu);
+	}
+
+	private void LearnButton_OnButtonHit()
+	{
+		OnRequestingOpenMenu?.Invoke(BoardMenuID.LearnMenu);
+	}
+
+	private void DictionaryButton_OnButtonHit()
+	{
+		OnRequestingOpenMenu?.Invoke(BoardMenuID.DictionaryMenu);
+	}
+
+	private void ExitGame()
+	{
+		Application.Quit();
+	}
+
+	private void OnDestroy()
+	{
+		dictionaryButton.OnButtonHit -= DictionaryButton_OnButtonHit;
+		learnButton.OnButtonHit -= LearnButton_OnButtonHit;
+		inputWordButton.OnButtonHit -= InputWordButton_OnButtonHit;
+		exitButton.OnButtonHit -= ExitGame;
+	}
 }

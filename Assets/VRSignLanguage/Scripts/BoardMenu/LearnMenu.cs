@@ -1,18 +1,43 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
 
-public class LearnMenu : MonoBehaviour
+public class LearnMenu : MonoBehaviour, IBoardMenu
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+	#region IBoardMenu
+	public BoardMenuID menuID { get; } = BoardMenuID.LearnMenu;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+	public event Action<BoardMenuID> OnRequestingOpenMenu;
+	#endregion
+
+	private bool initialized = false;
+	[SerializeField] private MenuButton backButton;
+
+	public void Hide()
+	{
+		gameObject.SetActive(false);
+	}
+
+	public void Initialize()
+	{
+		if (!initialized)
+		{
+			backButton.OnButtonHit += BackButton_OnButtonHit;
+			initialized = true;
+		}
+	}
+
+	public void Show()
+	{
+		gameObject.SetActive(true);
+	}
+
+	private void BackButton_OnButtonHit()
+	{
+		OnRequestingOpenMenu?.Invoke(BoardMenuID.Previous);
+	}
+
+	private void OnDestroy()
+	{
+		backButton.OnButtonHit -= BackButton_OnButtonHit;
+	}
 }

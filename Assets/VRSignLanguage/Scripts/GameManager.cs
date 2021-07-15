@@ -5,8 +5,8 @@ public class GameManager : MonoBehaviour
 {
 	[SerializeField] private BodyCalibrator calibrator;
 	[SerializeField] private VRInputHandler inputHandler;
-	[SerializeField] private CalibrateMenu calibrateMenu;
-	[SerializeField] private CalibrateMenuController calibrateMenuController;
+	[SerializeField] private MenuButton calibrateMenuButton;
+	[SerializeField] private BoardMenuController menuController;
 	[SerializeField] private Transform[] keyPositions;
 	private float maxHandDistance;
 	private float headLevelHeight;
@@ -17,12 +17,12 @@ public class GameManager : MonoBehaviour
 	private void Start()
 	{
 		SaveSystem.Init();
-		calibrateMenu.CalibrateMenuHit += ShowCalibrationMenu;
+		calibrateMenuButton.OnButtonHit += ShowCalibrationMenu;
 		Load();
 	} 
 	private void Update()
 	{
-		if (calibrateMenuController.isActive)
+		if (menuController.currMenu.menuID == BoardMenuID.CalibrateMenu)
 		{
 			if (inputHandler.GetRightHandController().secondaryButton && inputHandler.GetLeftHandController().secondaryButton)
 				StartCalibrate();
@@ -66,7 +66,7 @@ public class GameManager : MonoBehaviour
 
 	private void ShowCalibrationMenu()
 	{
-		calibrateMenuController.ShowCalibrationMenu();
+		menuController.OpenMenu(BoardMenuID.CalibrateMenu);
 	}
 
 	private void StartCalibrate()
@@ -102,6 +102,6 @@ public class GameManager : MonoBehaviour
 
 	private void OnDestroy()
 	{
-		calibrateMenu.CalibrateMenuHit -= ShowCalibrationMenu;
+		calibrateMenuButton.OnButtonHit -= ShowCalibrationMenu;
 	}
 }
