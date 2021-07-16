@@ -8,12 +8,15 @@ public class GameManager : MonoBehaviour
 	[SerializeField] private MenuButton calibrateMenuButton;
 	[SerializeField] private BoardMenuController menuController;
 	[SerializeField] private Transform[] keyPositions;
-	private float maxHandDistance;
-	private float headLevelHeight;
-	private float bellyHeight;
-	private Vector3 leftShoulderOffset;
-	private Vector3 rightShoulderOffset;
-	
+
+	//calibrated data
+	public float maxHandDistance { get; private set; }
+	public float headLevelHeight { get; private set; }
+	public float bellyHeight { get; private set; }
+	public Vector3 leftShoulderOffset { get; private set; }
+	public Vector3 rightShoulderOffset { get; private set; }
+	public float maxXReach { get; private set; }
+
 	// To store saved / loaded calibratedData
 	private SavedCalibratedData savedCalibratedData;
 
@@ -82,6 +85,7 @@ public class GameManager : MonoBehaviour
 		bellyHeight = calibratedValue.bellyHeight;
 		leftShoulderOffset = calibratedValue.shoulderOffsetLeft;
 		rightShoulderOffset = calibratedValue.shoulderOffsetRight;
+		maxXReach = calibratedValue.maxXReach;
 
 		// Store calibrated data to local variable
 		savedCalibratedData = new SavedCalibratedData(
@@ -89,7 +93,8 @@ public class GameManager : MonoBehaviour
 				headLevelHeight, 
 				bellyHeight, 
 				leftShoulderOffset, 
-				rightShoulderOffset
+				rightShoulderOffset,
+				maxXReach
 			);
 
 		SaveCalibratedData(savedCalibratedData);

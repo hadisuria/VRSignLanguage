@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GuideBall : MonoBehaviour
+public class GuideBall
 {
     /*
      * --REPRESENTATION OF GUIDEBALL DATA--
@@ -12,9 +12,6 @@ public class GuideBall : MonoBehaviour
 	 *	rightHandPath: [ Vector3 ],
      * }
      */
-
-     private class GuideBallPath {
-     }
 
     private string word;
     private List<Vector3> leftHandPath = new List<Vector3>();

@@ -7,7 +7,7 @@ public class BodyCalibrator : MonoBehaviour
 	[SerializeField] private Transform playerLeftController;
 	[SerializeField] private Transform playerRightController;
 
-	public (float bodyHeight, float handLength, Vector3 shoulderOffsetLeft, Vector3 shoulderOffsetRight, float bellyHeight) CalibratePosition()
+	public (float bodyHeight, float handLength, Vector3 shoulderOffsetLeft, Vector3 shoulderOffsetRight, float bellyHeight, float maxXReach) CalibratePosition()
 	{
 		//var leftHand = inputHandler.GetLeftHandController().controllerPos;
 		//var rightHand = inputHandler.GetRightHandController().controllerPos;
@@ -18,13 +18,15 @@ public class BodyCalibrator : MonoBehaviour
 		float handLength = GetHandLength(playerHMD.position, leftHand, rightHand);
 		(Vector3 shoulderOffsetLeft, Vector3 shoulderOffsetRight) = GetShoulderPosition(playerHMD.position, leftHand, rightHand);
 		float bellyHeight = GetBellyHeight(shoulderOffsetLeft, handLength);
+		float maxXReach = handLength + shoulderOffsetRight.x;
 
 		return (
 			bodyHeight, 
 			handLength, 
 			shoulderOffsetLeft, 
 			shoulderOffsetRight, 
-			bellyHeight
+			bellyHeight,
+			maxXReach
 		);
 	}
 

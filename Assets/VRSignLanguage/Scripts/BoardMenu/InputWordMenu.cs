@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -15,6 +16,9 @@ public class InputWordMenu : MonoBehaviour, IBoardMenu
 	[SerializeField] private MenuButton inputWordButton;
 	[SerializeField] private MenuButton backButton;
 	[SerializeField] private TextMeshProUGUI typedWord;
+
+	[SerializeField] private GuideBallHandler ballHandler;
+	private SignLanguageDictionary languageDictionary = new SignLanguageDictionary();
 
 	public void Hide()
 	{
@@ -34,6 +38,7 @@ public class InputWordMenu : MonoBehaviour, IBoardMenu
 
 	public void Show()
 	{
+		ballHandler.ResetList();
 		gameObject.SetActive(true);
 	}
 
@@ -44,12 +49,23 @@ public class InputWordMenu : MonoBehaviour, IBoardMenu
 
 	private void InputWordButton_OnButtonHit()
 	{
-		throw new NotImplementedException();
+		if(typedWord.text != "" || typedWord.text != " ")
+		{
+			(List<Vector3> leftTemp, List<Vector3> rightTemp) = ballHandler.CalculateOffset();
+			GuideBall tempBall = new GuideBall(typedWord.text, leftTemp, rightTemp);
+			languageDictionary.AddWord(tempBall);
+			ballHandler.ResetList();
+			Debug.Log($"Guide Ball Data Saved With \"{typedWord.text}\"") ;
+			typedWord.text = "";
+		} else
+		{
+			Debug.Log("Failed to saved guideball data, please input word. . . BLOK");
+		}
 	}
 
 	private void ResetButton_OnButtonHit()
 	{
-		throw new NotImplementedException();
+		ballHandler.ResetList();
 	}
 
 	private void OnDestroy()

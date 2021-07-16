@@ -7,7 +7,7 @@ public static class SaveSystem
 {
     // CONSTANT FOR SAVE FILE
     public static readonly string SAVE_CALIBRATION = "SavedCalibration.txt";
-    public static readonly string SAVE_GUIDEBALL_DATA = "SavedGuideballData.txt";
+    public static readonly string SAVE_SIGN_LANGUAGE_DICTIONARY = "SavedSignLanguageDictionary.txt";
 
     public static readonly string SAVE_FOLDER = Application.dataPath + "/Saves/";
     public static void Init()
