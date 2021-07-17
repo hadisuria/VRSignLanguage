@@ -278,7 +278,6 @@ GameObject:
   - component: {fileID: 7523635404090783092}
   - component: {fileID: 7523635404090783093}
   - component: {fileID: 7523635404090783094}
-  - component: {fileID: 6246653478380725358}
   m_Layer: 5
   m_Name: Back
   m_TagString: Untagged
@@ -386,18 +385,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &6246653478380725358
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7523635404090783088}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01586f12a873542488f8c53da06632b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &7523635404588676978
 GameObject:
   m_ObjectHideFlags: 0
@@ -558,9 +545,9 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7523635404933841408}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -0.09009504}
-  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children:
   - {fileID: 7523635403350381405}
   - {fileID: 7523635404938646270}
@@ -645,7 +632,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12c2006892cba444e9c24e92f9727dee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  backButton: {fileID: 6246653478380725358}
+  backButton: {fileID: 0}
 --- !u!1 &7523635404938646271
 GameObject:
   m_ObjectHideFlags: 0
