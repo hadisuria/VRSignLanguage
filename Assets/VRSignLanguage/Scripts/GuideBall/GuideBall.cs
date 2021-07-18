@@ -13,7 +13,7 @@ public class GuideBall
      * }
      */
 
-    private string word;
+    public string word { get; private set; }
     private List<Vector3> leftHandPath = new List<Vector3>();
     private List<Vector3> rightHandPath = new List<Vector3>();
 
