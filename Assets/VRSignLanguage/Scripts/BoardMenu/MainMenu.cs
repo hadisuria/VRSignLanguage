@@ -9,19 +9,19 @@ public class MainMenu : MonoBehaviour, IBoardMenu
 	#endregion
 
 	private bool initalized = false;
-	[SerializeField] MenuButton dictionaryButton;
-	[SerializeField] MenuButton learnButton;
-	[SerializeField] MenuButton inputWordButton;
-	[SerializeField] MenuButton exitButton;
+	[SerializeField] ButtonEvent dictionaryButton;
+	[SerializeField] ButtonEvent learnButton;
+	[SerializeField] ButtonEvent inputWordButton;
+	[SerializeField] ButtonEvent exitButton;
 
 	public void Initialize()
 	{
 		if (!initalized)
 		{
-			dictionaryButton.OnButtonHit += DictionaryButton_OnButtonHit; ;
-			learnButton.OnButtonHit += LearnButton_OnButtonHit; ;
-			inputWordButton.OnButtonHit += InputWordButton_OnButtonHit; ;
-			exitButton.OnButtonHit += ExitGame;
+			dictionaryButton.OnButtonClicked += DictionaryButton_OnButtonHit; ;
+			learnButton.OnButtonClicked += LearnButton_OnButtonHit; ;
+			inputWordButton.OnButtonClicked += InputWordButton_OnButtonHit; ;
+			exitButton.OnButtonClicked += ExitGame;
 			initalized = true;
 		}
 	}
@@ -58,9 +58,9 @@ public class MainMenu : MonoBehaviour, IBoardMenu
 
 	private void OnDestroy()
 	{
-		dictionaryButton.OnButtonHit -= DictionaryButton_OnButtonHit;
-		learnButton.OnButtonHit -= LearnButton_OnButtonHit;
-		inputWordButton.OnButtonHit -= InputWordButton_OnButtonHit;
-		exitButton.OnButtonHit -= ExitGame;
+		dictionaryButton.OnButtonClicked -= DictionaryButton_OnButtonHit;
+		learnButton.OnButtonClicked -= LearnButton_OnButtonHit;
+		inputWordButton.OnButtonClicked -= InputWordButton_OnButtonHit;
+		exitButton.OnButtonClicked -= ExitGame;
 	}
 }

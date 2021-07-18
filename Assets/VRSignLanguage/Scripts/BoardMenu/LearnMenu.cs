@@ -10,7 +10,7 @@ public class LearnMenu : MonoBehaviour, IBoardMenu
 	#endregion
 
 	private bool initialized = false;
-	[SerializeField] private MenuButton backButton;
+	[SerializeField] private ButtonEvent backButton;
 
 	public void Hide()
 	{
@@ -21,7 +21,7 @@ public class LearnMenu : MonoBehaviour, IBoardMenu
 	{
 		if (!initialized)
 		{
-			backButton.OnButtonHit += BackButton_OnButtonHit;
+			backButton.OnButtonClicked += BackButton_OnButtonHit;
 			initialized = true;
 		}
 	}
@@ -38,6 +38,6 @@ public class LearnMenu : MonoBehaviour, IBoardMenu
 
 	private void OnDestroy()
 	{
-		backButton.OnButtonHit -= BackButton_OnButtonHit;
+		backButton.OnButtonClicked -= BackButton_OnButtonHit;
 	}
 }

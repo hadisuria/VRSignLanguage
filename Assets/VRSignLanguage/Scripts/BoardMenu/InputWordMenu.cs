@@ -12,9 +12,9 @@ public class InputWordMenu : MonoBehaviour, IBoardMenu
 	#endregion
 
 	private bool initialized = false;
-	[SerializeField] private MenuButton resetButton;
-	[SerializeField] private MenuButton inputWordButton;
-	[SerializeField] private MenuButton backButton;
+	[SerializeField] private ButtonEvent resetButton;
+	[SerializeField] private ButtonEvent inputWordButton;
+	[SerializeField] private ButtonEvent backButton;
 	[SerializeField] private TextMeshProUGUI typedWord;
 
 	[SerializeField] private GuideBallHandler ballHandler;
@@ -29,9 +29,9 @@ public class InputWordMenu : MonoBehaviour, IBoardMenu
 	{
 		if (!initialized)
 		{
-			resetButton.OnButtonHit += ResetButton_OnButtonHit;
-			inputWordButton.OnButtonHit += InputWordButton_OnButtonHit;
-			backButton.OnButtonHit += BackButton_OnButtonHit;
+			resetButton.OnButtonClicked += ResetButton_OnButtonHit;
+			inputWordButton.OnButtonClicked += InputWordButton_OnButtonHit;
+			backButton.OnButtonClicked += BackButton_OnButtonHit;
 			initialized = true;
 		}
 	}
@@ -70,8 +70,8 @@ public class InputWordMenu : MonoBehaviour, IBoardMenu
 
 	private void OnDestroy()
 	{
-		resetButton.OnButtonHit -= ResetButton_OnButtonHit;
-		inputWordButton.OnButtonHit -= InputWordButton_OnButtonHit;
-		backButton.OnButtonHit -= BackButton_OnButtonHit;
+		resetButton.OnButtonClicked -= ResetButton_OnButtonHit;
+		inputWordButton.OnButtonClicked -= InputWordButton_OnButtonHit;
+		backButton.OnButtonClicked -= BackButton_OnButtonHit;
 	}
 }

@@ -12,7 +12,7 @@ public class CalibrateMenuController : MonoBehaviour, IBoardMenu
 	private bool initialized = false;
 	//public bool isActive { get; private set; } = false;
 
-	[SerializeField] private MenuButton closeButton;
+	[SerializeField] private ButtonEvent closeButton;
 
 	//void Start()
  //   {
@@ -41,7 +41,7 @@ public class CalibrateMenuController : MonoBehaviour, IBoardMenu
 	{
 		if (!initialized)
 		{
-			closeButton.OnButtonHit += CloseButton_OnButtonHit;
+			closeButton.OnButtonClicked += CloseButton_OnButtonHit;
 			initialized = true;
 		}
 	}
@@ -73,6 +73,6 @@ public class CalibrateMenuController : MonoBehaviour, IBoardMenu
 
 	private void OnDestroy()
 	{
-        closeButton.OnButtonHit -= CloseButton_OnButtonHit;
+        closeButton.OnButtonClicked -= CloseButton_OnButtonHit;
 	}
 }

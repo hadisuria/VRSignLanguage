@@ -5,9 +5,12 @@ public class GameManager : MonoBehaviour
 {
 	[SerializeField] private BodyCalibrator calibrator;
 	[SerializeField] private VRInputHandler inputHandler;
-	[SerializeField] private MenuButton calibrateMenuButton;
+	[SerializeField] private ButtonEvent calibrateMenuButton;
 	[SerializeField] private BoardMenuController menuController;
 	[SerializeField] private Transform[] keyPositions;
+
+	public static bool isRayActive { get; private set; }
+	[SerializeField] private VRInputModule vrInputModule;
 
 	//calibrated data
 	public float maxHandDistance { get; private set; }
@@ -23,7 +26,7 @@ public class GameManager : MonoBehaviour
 	private void Start()
 	{
 		SaveSystem.Init();
-		calibrateMenuButton.OnButtonHit += ShowCalibrationMenu;
+		calibrateMenuButton.OnButtonClicked += ShowCalibrationMenu;
 		Load();
 	} 
 	private void Update()
@@ -33,6 +36,50 @@ public class GameManager : MonoBehaviour
 			if (inputHandler.GetRightHandController().secondaryButton && inputHandler.GetLeftHandController().secondaryButton)
 				StartCalibrate();
 		}
+
+		if(vrInputModule.mainController == OVRInput.Controller.RTouch)
+		{
+			if (inputHandler.GetRightHandController().primaryButton)
+			{
+				if (!isRayActive)
+					isRayActive = true;
+				else
+					isRayActive = false;
+			}
+		}
+		else if(vrInputModule.mainController == OVRInput.Controller.LTouch)
+		{
+			if (inputHandler.GetLeftHandController().primaryButton)
+			{
+				if (!isRayActive)
+					isRayActive = true;
+				else
+					isRayActive = false;
+			}
+		}
+
+		//if (inputHandler.GetRightHandController().primaryButton)
+		//{
+		//	if (!isRayActive)
+		//		isRayActive = true;
+		//	else if (isRayActive && vrInputModule.mainController != OVRInput.Controller.RTouch)
+		//		isRayActive = true;
+		//	else
+		//		isRayActive = false;
+
+		//	vrInputModule.mainController = OVRInput.Controller.RTouch;
+		//}
+		//else if (inputHandler.GetLeftHandController().primaryButton)
+		//{
+		//	if (!isRayActive)
+		//		isRayActive = true;
+		//	else if (isRayActive && vrInputModule.mainController != OVRInput.Controller.LTouch)
+		//		isRayActive = true;
+		//	else
+		//		isRayActive = false;
+
+		//	vrInputModule.mainController = OVRInput.Controller.LTouch;
+		//}
 
 		if (Input.GetMouseButtonDown(0))
 		{
@@ -65,6 +112,8 @@ public class GameManager : MonoBehaviour
 			SavedCalibratedData savedCalibratedDataObj = JsonUtility.FromJson<SavedCalibratedData>(saveString);
 			// Assign data to saved calibrated data
 			savedCalibratedData = new SavedCalibratedData(savedCalibratedDataObj);
+
+			menuController.OpenMenu(BoardMenuID.MainMenu);
 		}
 		else
 		{
@@ -116,6 +165,6 @@ public class GameManager : MonoBehaviour
 
 	private void OnDestroy()
 	{
-		calibrateMenuButton.OnButtonHit -= ShowCalibrationMenu;
+		calibrateMenuButton.OnButtonClicked -= ShowCalibrationMenu;
 	}
 }
