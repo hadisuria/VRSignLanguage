@@ -2738,6 +2738,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1290123736}
     m_Modifications:
+    - target: {fileID: 1731376714539791093, guid: 0ab5f9a6ad42eee488ed2ab4b4dcb381,
+        type: 3}
+      propertyPath: m_Name
+      value: WordSection
+      objectReference: {fileID: 0}
     - target: {fileID: 5481179401455514531, guid: 0ab5f9a6ad42eee488ed2ab4b4dcb381,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -2876,6 +2881,21 @@ PrefabInstance:
     - target: {fileID: 6609692140605766288, guid: 0ab5f9a6ad42eee488ed2ab4b4dcb381,
         type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7907655436416748587, guid: 0ab5f9a6ad42eee488ed2ab4b4dcb381,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7907655436416748587, guid: 0ab5f9a6ad42eee488ed2ab4b4dcb381,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7907655436416748587, guid: 0ab5f9a6ad42eee488ed2ab4b4dcb381,
+        type: 3}
+      propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
