@@ -13,13 +13,13 @@ public class WordSectionControl : MonoBehaviour
     // generate mock data || Delete later
     private List<string> mockData = new List<string>();
 
-    void start(){
+    void Start(){
         // generate mock data for testing purpose
-        generateMockData();
+        GenerateMockData();
         GenerateWordSection();
     }
 
-    private void generateMockData(){
+    private void GenerateMockData(){
         mockData.Add("Test 1");
         mockData.Add("Test 2");
         mockData.Add("Test 3");
@@ -42,11 +42,11 @@ public class WordSectionControl : MonoBehaviour
         for (int i = 0; i < mockData.Count; i++) 
 		{
             // not fixed logic & update later
-            GameObject temp = Instantiate(Resources.Load<GameObject>("WordSectionButton"));
+            GameObject temp = Instantiate(Resources.Load<GameObject>("WordSectionButton"), transform);
             temp.SetActive(true);
             temp.GetComponentInChildren<TextMeshProUGUI>().text =  i + ". " + mockData[i];
 
-			temp.transform.SetParent (transform, false);
+			//temp.transform.SetParent (transform, false);
 		}
 
     }
