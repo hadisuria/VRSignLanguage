@@ -5,9 +5,12 @@ using UnityEngine.UI;
 using TMPro;
 
 
+
 public class WordListControl : MonoBehaviour
 {
     private List<GameObject> buttons;
+    private SignLanguageDictionary dictionaryData;
+
     public void GenerateWordList(){
 
         buttons = new List<GameObject>();
@@ -19,11 +22,11 @@ public class WordListControl : MonoBehaviour
             buttons.Clear();
         }
 
-        for (int i = 0; i < SignLanguageDictionary.guideBallDataList.Count; i++) 
+        for (int i = 0; i < dictionaryData.guideBallDataList.Count; i++) 
 		{
             GameObject temp = Instantiate(Resources.Load<GameObject>("WordButton"));
             temp.SetActive(true);
-            temp.GetComponentInChildren<TextMeshProUGUI>().text =  i + ". " + SignLanguageDictionary.guideBallDataList[i].word;
+            temp.GetComponentInChildren<TextMeshProUGUI>().text =  i + ". " + dictionaryData.guideBallDataList[i].word;
 
 			temp.transform.SetParent (transform, false);
 		}

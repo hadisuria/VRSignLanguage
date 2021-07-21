@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
+[Serializable]
 public class GuideBall
 {
     /*
@@ -13,9 +15,9 @@ public class GuideBall
      * }
      */
 
-    public string word { get; private set; }
-    private List<Vector3> leftHandPath = new List<Vector3>();
-    private List<Vector3> rightHandPath = new List<Vector3>();
+    public string word;
+    public List<Vector3> leftHandPath = new List<Vector3>();
+    public List<Vector3> rightHandPath = new List<Vector3>();
 
     public GuideBall(string word, List<Vector3> leftHandPath, List<Vector3> rightHandPath ){
         this.word = word;

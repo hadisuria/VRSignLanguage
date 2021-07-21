@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
-
+using System.Collections;
+using System.Collections.Generic;
+using System;
 
 public class GameManager : MonoBehaviour
 {
@@ -23,12 +25,21 @@ public class GameManager : MonoBehaviour
 	// To store saved / loaded calibratedData
 	private SavedCalibratedData savedCalibratedData;
 
+
+	// testing
+	private SignLanguageDictionary languageDictionary = new SignLanguageDictionary();
+ 
+
 	private void Start()
 	{
 		SaveSystem.Init();
 		calibrateMenuButton.OnButtonClicked += ShowCalibrationMenu;
 		Load();
+
+		// Load Sign Language Dictionary Data
+		languageDictionary.LoadData();
 	} 
+
 	private void Update()
 	{
 		if (menuController.currMenu.menuID == BoardMenuID.CalibrateMenu)

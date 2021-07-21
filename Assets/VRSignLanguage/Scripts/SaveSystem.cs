@@ -6,8 +6,8 @@ using UnityEngine;
 public static class SaveSystem
 {
     // CONSTANT FOR SAVE FILE
-    public static readonly string SAVE_CALIBRATION = "SavedCalibration.txt";
-    public static readonly string SAVE_SIGN_LANGUAGE_DICTIONARY = "SavedSignLanguageDictionary.txt";
+    public static readonly string SAVE_CALIBRATION = "SavedCalibration.json";
+    public static readonly string SAVE_SIGN_LANGUAGE_DICTIONARY = "SavedSignLanguageDictionary.json";
 
     public static readonly string SAVE_FOLDER = Application.dataPath + "/Saves/";
     public static void Init()
@@ -22,7 +22,6 @@ public static class SaveSystem
     public static void SaveData(string saveString, string fileName)
     {
         File.WriteAllText(SAVE_FOLDER + fileName, saveString);
-
     }
 
 

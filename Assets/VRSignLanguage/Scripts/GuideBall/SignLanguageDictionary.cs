@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using System;
 
+[Serializable]
 public class SignLanguageDictionary
 {
 	/* 
@@ -21,31 +23,25 @@ public class SignLanguageDictionary
 	 * ];
      */
 
-	public static List<GuideBall> guideBallDataList { get; private set; } = new List<GuideBall>();
+	public List<GuideBall> guideBallDataList = new List<GuideBall>();
 
-	private void SaveData(List<GuideBall> savedGuideBallData)
-	{
-		string json = JsonUtility.ToJson(savedGuideBallData);
-		SaveSystem.SaveData(json, SaveSystem.SAVE_SIGN_LANGUAGE_DICTIONARY);
-	}
-
-	private void LoadData()
+	public void LoadData()
 	{
 		// load the guideball data if any
 		string saveString = SaveSystem.LoadData(SaveSystem.SAVE_SIGN_LANGUAGE_DICTIONARY);
 		if (saveString != null)
 		{
-			List<GuideBall> savedGuideBallDataObj = JsonUtility.FromJson<List<GuideBall>>(saveString);
-			guideBallDataList = savedGuideBallDataObj;
+			SignLanguageDictionary savedGuideBallDataObj = JsonUtility.FromJson<SignLanguageDictionary>(saveString);
+			this.guideBallDataList = savedGuideBallDataObj.guideBallDataList;
 		}
 	}
 
 	public void AddWord(GuideBall newGuideBall)
 	{
-		
-		guideBallDataList.Add(newGuideBall);
+		this.guideBallDataList.Add(newGuideBall);
 		// Savedata
-		SaveData(guideBallDataList);
+		string json = JsonUtility.ToJson(this, true);
+		SaveSystem.SaveData(json, SaveSystem.SAVE_SIGN_LANGUAGE_DICTIONARY);
 	}
 
 	//public SignLanguageDictionary(List<GuideBall> savedGuideBallData)
