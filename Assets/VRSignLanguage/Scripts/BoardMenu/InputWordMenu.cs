@@ -44,6 +44,8 @@ public class InputWordMenu : MonoBehaviour, IBoardMenu
 
 	private void BackButton_OnButtonHit()
 	{
+		ballHandler.ResetList();
+		typedWord.text = "";
 		OnRequestingOpenMenu?.Invoke(BoardMenuID.Previous);
 	}
 
@@ -66,6 +68,7 @@ public class InputWordMenu : MonoBehaviour, IBoardMenu
 	private void ResetButton_OnButtonHit()
 	{
 		ballHandler.ResetList();
+		typedWord.text = "";
 	}
 
 	private void OnDestroy()

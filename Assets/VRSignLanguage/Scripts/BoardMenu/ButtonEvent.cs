@@ -22,24 +22,24 @@ public class ButtonEvent : MonoBehaviour, IPointerEnterHandler, IPointerDownHand
 	public void OnPointerDown(PointerEventData eventData)
 	{
 		if (GameManager.isRayActive)
-			targetGraphic.material.color = downColor;
+			targetGraphic.color = downColor;
 	}
 
 	public void OnPointerEnter(PointerEventData eventData)
 	{
 		if (GameManager.isRayActive)
-			targetGraphic.material.color = hoverColor;
+			targetGraphic.color = hoverColor;
 	}
 
 	public void OnPointerExit(PointerEventData eventData)
 	{
 		if (GameManager.isRayActive)
-			targetGraphic.material.color = normalColor;
+			targetGraphic.color = normalColor;
 	}
 
 	public void OnPointerUp(PointerEventData eventData)
 	{
 		if (GameManager.isRayActive)
-			targetGraphic.material.color = hoverColor;
+			targetGraphic.color = hoverColor;
 	}
 }

@@ -9,10 +9,10 @@ public class BodyCalibrator : MonoBehaviour
 
 	public (float bodyHeight, float handLength, Vector3 shoulderOffsetLeft, Vector3 shoulderOffsetRight, float bellyHeight, float maxXReach) CalibratePosition()
 	{
-		//var leftHand = inputHandler.GetLeftHandController().controllerPos;
-		//var rightHand = inputHandler.GetRightHandController().controllerPos;
-		var leftHand = playerLeftController.position;
-		var rightHand = playerRightController.position;
+		var leftHand = inputHandler.GetLeftHandController().controllerPos;
+		var rightHand = inputHandler.GetRightHandController().controllerPos;
+		//var leftHand = playerLeftController.position;
+		//var rightHand = playerRightController.position;
 
 		float bodyHeight = GetBodyHeight(playerHMD.position);
 		float handLength = GetHandLength(playerHMD.position, leftHand, rightHand);

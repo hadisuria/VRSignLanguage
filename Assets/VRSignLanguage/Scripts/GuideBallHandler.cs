@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class GuideBallHandler : MonoBehaviour
@@ -90,11 +89,13 @@ public class GuideBallHandler : MonoBehaviour
         if(target == Controller.Left)
 		{
             spawnedBall.Add(Instantiate(Resources.Load<GameObject>("GuideBallLeft")));
+            spawnedBall[spawnedBall.Count - 1].transform.position = leftController.controllerPos;
             leftGuideBall.Add(spawnedBall[spawnedBall.Count - 1].transform.position);
         }
 		else
 		{
             spawnedBall.Add(Instantiate(Resources.Load<GameObject>("GuideBallRight")));
+            spawnedBall[spawnedBall.Count - 1].transform.position = rightController.controllerPos;
             rightGuideBall.Add(spawnedBall[spawnedBall.Count - 1].transform.position);
         }
     }

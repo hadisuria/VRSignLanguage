@@ -3,6 +3,8 @@ using UnityEngine.UI;
 
 public class VRInputHandler : MonoBehaviour
 {
+	[SerializeField] private Transform leftHandTransform;
+	[SerializeField] private Transform rightHandTransform;
 	private ControllerData leftController = new ControllerData();
 	private ControllerData rightController = new ControllerData();
 
@@ -19,7 +21,7 @@ public class VRInputHandler : MonoBehaviour
 	private void Update()
 	{
 		//set input for left controller
-		leftController.SetControllerPos(OVRInput.GetLocalControllerPosition(OVRInput.Controller.LTouch));
+		leftController.SetControllerPos(leftHandTransform.position);
 		leftController.SetPrimaryButton(OVRInput.Get(OVRInput.Button.One, OVRInput.Controller.LTouch));
 		leftController.SetSecondaryButton(OVRInput.Get(OVRInput.Button.Two, OVRInput.Controller.LTouch));
 		leftController.SetTriggerButton(OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger, OVRInput.Controller.LTouch));
@@ -27,7 +29,7 @@ public class VRInputHandler : MonoBehaviour
 		leftController.SetThumbTouchValue(OVRInput.Get(OVRInput.Touch.PrimaryThumbstick, OVRInput.Controller.LTouch));
 
 		//set input for right controller
-		rightController.SetControllerPos(OVRInput.GetLocalControllerPosition(OVRInput.Controller.RTouch));
+		rightController.SetControllerPos(rightHandTransform.position);
 		rightController.SetPrimaryButton(OVRInput.Get(OVRInput.Button.One, OVRInput.Controller.RTouch));
 		rightController.SetSecondaryButton(OVRInput.Get(OVRInput.Button.Two, OVRInput.Controller.RTouch));
 		rightController.SetTriggerButton(OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger, OVRInput.Controller.RTouch));
