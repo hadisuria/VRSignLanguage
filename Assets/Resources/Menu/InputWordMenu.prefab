@@ -274,9 +274,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetGraphic: {fileID: 6667480629579121772}
-  normalColor: {r: 1, g: 1, b: 1, a: 1}
-  hoverColor: {r: 0.85, g: 0.85, b: 0.85, a: 1}
-  downColor: {r: 0.7, g: 0.7, b: 0.7, a: 1}
+  normalColor: {r: 1, g: 0.3647059, b: 0, a: 1}
+  hoverColor: {r: 0.85, g: 0.3647059, b: 0, a: 1}
+  downColor: {r: 0.7, g: 0.3647059, b: 0, a: 1}
 --- !u!1 &6667480629681618909
 GameObject:
   m_ObjectHideFlags: 0
@@ -1454,9 +1454,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetGraphic: {fileID: 6667480631214311002}
-  normalColor: {r: 1, g: 1, b: 1, a: 1}
-  hoverColor: {r: 0.85, g: 0.85, b: 0.85, a: 1}
-  downColor: {r: 0.7, g: 0.7, b: 0.7, a: 1}
+  normalColor: {r: 0.34509805, g: 1, b: 0, a: 1}
+  hoverColor: {r: 0.34509805, g: 0.85, b: 0, a: 1}
+  downColor: {r: 0.34509805, g: 0.7, b: 0, a: 1}
 --- !u!1 &6667480631559585491
 GameObject:
   m_ObjectHideFlags: 0
