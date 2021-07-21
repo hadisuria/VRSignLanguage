@@ -1,13 +1,15 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
+[Serializeable]
 public class SavedCalibratedData
 {
-	private float maxHandDistance;
-	private float headLevelHeight;
-	private float bellyHeight;
-	private Vector3 leftShoulderOffset;
-	private Vector3 rightShoulderOffset;
-	private float maxXReach;
+	public float maxHandDistance;
+	public float headLevelHeight;
+	public float bellyHeight;
+	public Vector3 leftShoulderOffset;
+	public Vector3 rightShoulderOffset;
+	public float maxXReach;
 
 	public SavedCalibratedData(SavedCalibratedData savedCalibratedData){
 		maxHandDistance = savedCalibratedData.maxHandDistance;

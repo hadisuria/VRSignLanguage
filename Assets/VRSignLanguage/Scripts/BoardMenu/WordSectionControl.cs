@@ -44,7 +44,7 @@ public class WordSectionControl : MonoBehaviour
             // not fixed logic & update later
             GameObject temp = Instantiate(Resources.Load<GameObject>("WordSectionButton"), transform);
             temp.SetActive(true);
-            temp.GetComponentInChildren<TextMeshProUGUI>().text =  i + ". " + mockData[i];
+            temp.GetComponentInChildren<TextMeshProUGUI>().text =  (i+1) + ". " + mockData[i];
 
 			//temp.transform.SetParent (transform, false);
 		}

@@ -9,9 +9,13 @@ using TMPro;
 public class WordListControl : MonoBehaviour
 {
     private List<GameObject> buttons;
-    private SignLanguageDictionary dictionaryData;
+    [SerializeField]
+    private GameManager gameManager;
 
     public void GenerateWordList(){
+
+        //test debug
+        Debug.Log("(Generating WordList) Game manager" + gameManager.languageDictionary.guideBallDataList.Count);
 
         buttons = new List<GameObject>();
 
@@ -22,11 +26,11 @@ public class WordListControl : MonoBehaviour
             buttons.Clear();
         }
 
-        for (int i = 0; i < dictionaryData.guideBallDataList.Count; i++) 
+        for (int i = 0; i < gameManager.languageDictionary.guideBallDataList.Count; i++) 
 		{
             GameObject temp = Instantiate(Resources.Load<GameObject>("WordButton"));
             temp.SetActive(true);
-            temp.GetComponentInChildren<TextMeshProUGUI>().text =  i + ". " + dictionaryData.guideBallDataList[i].word;
+            temp.GetComponentInChildren<TextMeshProUGUI>().text =  (i+1) + ". " + gameManager.languageDictionary.guideBallDataList[i].word;
 
 			temp.transform.SetParent (transform, false);
 		}
@@ -35,5 +39,9 @@ public class WordListControl : MonoBehaviour
 
     public void ButtonClick(string myText){
         Debug.Log(myText);
+    }
+
+    void Start(){
+        GenerateWordList();
     }
 }

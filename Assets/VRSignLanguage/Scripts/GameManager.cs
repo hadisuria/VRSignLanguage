@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Diagnostics;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using System;
@@ -27,7 +28,7 @@ public class GameManager : MonoBehaviour
 
 
 	// testing
-	private SignLanguageDictionary languageDictionary = new SignLanguageDictionary();
+	public SignLanguageDictionary languageDictionary = new SignLanguageDictionary();
  
 
 	private void Start()
@@ -111,6 +112,7 @@ public class GameManager : MonoBehaviour
 	private void SaveCalibratedData(SavedCalibratedData savedCalibratedDataObj)
 	{
 		string json = JsonUtility.ToJson(savedCalibratedDataObj);
+		Debug.Log("SavedCalibratedData: " + json);
 		SaveSystem.SaveData(json, SaveSystem.SAVE_CALIBRATION);
 	}
 
