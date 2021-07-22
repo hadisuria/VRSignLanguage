@@ -8,8 +8,8 @@ public class GuideBallHandler : MonoBehaviour
     private VRInputHandler inputHandler;
     private ControllerData leftController;
     private ControllerData rightController;
-    //[SerializeField] private Transform playerLeftController;
-    //[SerializeField] private Transform playerRightController;
+    [SerializeField] private Transform playerLeftController;
+    [SerializeField] private Transform playerRightController;
 
     private List<GameObject> spawnedBall = new List<GameObject>();
     private List<Vector3> leftGuideBall = new List<Vector3>();
@@ -32,6 +32,8 @@ public class GuideBallHandler : MonoBehaviour
 	{
         gameManager = FindObjectOfType<GameManager>();
         inputHandler = FindObjectOfType<VRInputHandler>();
+        playerLeftController = GameObject.Find("LeftControllerAnchor").transform;
+        playerRightController = GameObject.Find("RightControllerAnchor").transform;
 	}
 
 	public void ResetList()
@@ -91,15 +93,15 @@ public class GuideBallHandler : MonoBehaviour
         if(target == Controller.Left)
 		{
             spawnedBall.Add(Instantiate(Resources.Load<GameObject>("GuideBallLeft")));
-            spawnedBall[spawnedBall.Count - 1].transform.position = leftController.controllerPos;
-            //spawnedBall[spawnedBall.Count - 1].transform.position = playerLeftController.position;
+            //spawnedBall[spawnedBall.Count - 1].transform.position = leftController.controllerPos;
+            spawnedBall[spawnedBall.Count - 1].transform.position = playerLeftController.position;
             leftGuideBall.Add(spawnedBall[spawnedBall.Count - 1].transform.position);
         }
 		else
 		{
             spawnedBall.Add(Instantiate(Resources.Load<GameObject>("GuideBallRight")));
-            spawnedBall[spawnedBall.Count - 1].transform.position = rightController.controllerPos;
-            //spawnedBall[spawnedBall.Count - 1].transform.position = playerRightController.position;
+            //spawnedBall[spawnedBall.Count - 1].transform.position = rightController.controllerPos;
+            spawnedBall[spawnedBall.Count - 1].transform.position = playerRightController.position;
             rightGuideBall.Add(spawnedBall[spawnedBall.Count - 1].transform.position);
         }
     }
