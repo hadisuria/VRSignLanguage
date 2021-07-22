@@ -51,7 +51,7 @@ public class InputWordMenu : MonoBehaviour, IBoardMenu
 
 	private void InputWordButton_OnButtonHit()
 	{
-		if(typedWord.text != "" || typedWord.text != " ")
+		if(typedWord.text != "" && typedWord.text != " ")
 		{
 			(List<Vector3> leftTemp, List<Vector3> rightTemp) = ballHandler.CalculateOffset();
 			GuideBall tempBall = new GuideBall(typedWord.text, leftTemp, rightTemp);
