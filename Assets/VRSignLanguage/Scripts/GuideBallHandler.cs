@@ -38,11 +38,11 @@ public class GuideBallHandler : MonoBehaviour
         rightGuideBall.Clear();
         calculatedRightGuideBall.Clear();
         calculatedLeftGuideBall.Clear();
-        foreach(GameObject o in spawnedBall)
+        for(int i = 0; i < spawnedBall.Count; i++)
 		{
-            spawnedBall.Remove(o);
-            Destroy(o);
+            Destroy(spawnedBall[i]);
 		}
+        spawnedBall.Clear();
 	}
 
 	private void FixedUpdate()

@@ -1400,8 +1400,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d9e7adecb4fabb4fb161713652c84f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  leftHandTransform: {fileID: 223527048}
-  rightHandTransform: {fileID: 167268584}
+  leftHandTransform: {fileID: 289061842}
+  rightHandTransform: {fileID: 1255365207}
   inputText: {fileID: 357343748}
   gestureText: {fileID: 733418117}
 --- !u!4 &741002239

@@ -54,6 +54,7 @@ public class WordListControl : MonoBehaviour
     }
 
     void Start(){
+        gameManager = FindObjectOfType<GameManager>();
         GenerateWordList();
     }
 }
