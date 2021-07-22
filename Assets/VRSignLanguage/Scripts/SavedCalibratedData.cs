@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-[Serializeable]
+[Serializable]
 public class SavedCalibratedData
 {
 	public float maxHandDistance;

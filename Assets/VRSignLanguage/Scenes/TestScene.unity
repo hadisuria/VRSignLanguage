@@ -1277,6 +1277,8 @@ MonoBehaviour:
   - {fileID: 23939387}
   - {fileID: 2098907447}
   vrInputModule: {fileID: 420985522}
+  languageDictionary:
+    guideBallDataList: []
 --- !u!4 &662044070
 Transform:
   m_ObjectHideFlags: 0
@@ -1398,6 +1400,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d9e7adecb4fabb4fb161713652c84f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  leftHandTransform: {fileID: 223527048}
+  rightHandTransform: {fileID: 167268584}
   inputText: {fileID: 357343748}
   gestureText: {fileID: 733418117}
 --- !u!4 &741002239
@@ -2480,6 +2484,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 949d5b44941e4ec48a664663481d1442, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
 --- !u!1 &2093232406
 GameObject:
   m_ObjectHideFlags: 0

@@ -112,7 +112,6 @@ public class GameManager : MonoBehaviour
 	private void SaveCalibratedData(SavedCalibratedData savedCalibratedDataObj)
 	{
 		string json = JsonUtility.ToJson(savedCalibratedDataObj);
-		Debug.Log("SavedCalibratedData: " + json);
 		SaveSystem.SaveData(json, SaveSystem.SAVE_CALIBRATION);
 	}
 
