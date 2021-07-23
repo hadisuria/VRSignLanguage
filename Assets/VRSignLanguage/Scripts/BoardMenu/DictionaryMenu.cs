@@ -25,12 +25,12 @@ public class DictionaryMenu : MonoBehaviour, IBoardMenu
 			backButton.OnButtonClicked += BackButton_OnButtonHit;
 			initialized = true;
 		}
+		wordListControl.GenerateWordList();
 	}
 
 	public void Show()
 	{
 		gameObject.SetActive(true);
-		wordListControl.GenerateWordList();
 	}
 
 	private void BackButton_OnButtonHit()

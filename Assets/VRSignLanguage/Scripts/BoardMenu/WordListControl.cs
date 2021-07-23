@@ -14,6 +14,8 @@ public class WordListControl : MonoBehaviour
         //test debug
         Reset();
         Debug.Log("(Generating WordList) Game manager" + gameManager.languageDictionary.guideBallDataList.Count);
+        if (gameManager == null)
+            gameManager = FindObjectOfType<GameManager>();
 
         for (int i = 0; i < gameManager.languageDictionary.guideBallDataList.Count; i++) 
 		{
@@ -50,7 +52,7 @@ public class WordListControl : MonoBehaviour
         }
     }
 
-    void Start(){
+    void Awake(){
         gameManager = FindObjectOfType<GameManager>();
         //GenerateWordList();
     }
