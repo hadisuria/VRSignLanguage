@@ -15,7 +15,7 @@ public class InputWordMenu : MonoBehaviour, IBoardMenu
 	[SerializeField] private ButtonEvent resetButton;
 	[SerializeField] private ButtonEvent inputWordButton;
 	[SerializeField] private ButtonEvent backButton;
-	[SerializeField] private TextMeshProUGUI typedWord;
+	[SerializeField] private TMP_InputField typedWord;
 
 	[SerializeField] private GuideBallHandler ballHandler;
 	private SignLanguageDictionary languageDictionary = new SignLanguageDictionary();
@@ -23,6 +23,8 @@ public class InputWordMenu : MonoBehaviour, IBoardMenu
 	public void Hide()
 	{
 		gameObject.SetActive(false);
+		ballHandler.ResetList();
+		typedWord.text = "";
 	}
 
 	public void Initialize(params object[] arguments)
@@ -38,7 +40,6 @@ public class InputWordMenu : MonoBehaviour, IBoardMenu
 
 	public void Show()
 	{
-		ballHandler.ResetList();
 		gameObject.SetActive(true);
 	}
 

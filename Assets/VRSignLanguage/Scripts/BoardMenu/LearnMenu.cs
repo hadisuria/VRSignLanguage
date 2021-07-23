@@ -33,7 +33,7 @@ public class LearnMenu : MonoBehaviour, IBoardMenu
 
 	private void BackButton_OnButtonHit()
 	{
-		OnRequestingOpenMenu?.Invoke(BoardMenuID.Previous, null);
+		OnRequestingOpenMenu?.Invoke(BoardMenuID.MainMenu, null);
 	}
 
 	private void OnDestroy()

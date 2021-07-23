@@ -79,30 +79,44 @@ public class GameManager : MonoBehaviour
 
 		if(vrInputModule.mainController == OVRInput.Controller.RTouch)
 		{
-			if (rightPrimaryButton != prevInputHandlerPrimaryButtonRight && rightPrimaryButton)
+			if (rightPrimaryButton)
 			{
-				prevInputHandlerPrimaryButtonRight = rightPrimaryButton;
-				// outdated
-				// // if (!isRayActive)
-				// // 	isRayActive = true;
-				// // else
-				// // 	isRayActive = false;
-				// Simplified Code
-				isRayActive = !isRayActive;
+				if (!prevInputHandlerPrimaryButtonRight)
+				{
+					prevInputHandlerPrimaryButtonRight = true; ;
+					// outdated
+					// // if (!isRayActive)
+					// // 	isRayActive = true;
+					// // else
+					// // 	isRayActive = false;
+					// Simplified Code
+					isRayActive = !isRayActive;
+				}
+			}
+			else
+			{
+				prevInputHandlerPrimaryButtonRight = false;
 			}
 		}
 		else if(vrInputModule.mainController == OVRInput.Controller.LTouch)
 		{
-			if (leftPrimaryButton != prevInputHandlerPrimaryButtonLeft && leftPrimaryButton)
+			if (leftPrimaryButton)
 			{
-				prevInputHandlerPrimaryButtonLeft = leftPrimaryButton;
-				// outdated
-				// // if (!isRayActive)
-				// // 	isRayActive = true;
-				// // else
-				// // 	isRayActive = false;
-				// Simplified Code
-				isRayActive = !isRayActive;
+				if (!prevInputHandlerPrimaryButtonLeft)
+				{
+					prevInputHandlerPrimaryButtonLeft = true;
+					// outdated
+					// // if (!isRayActive)
+					// // 	isRayActive = true;
+					// // else
+					// // 	isRayActive = false;
+					// Simplified Code
+					isRayActive = !isRayActive;
+				}
+			}
+			else
+			{
+				prevInputHandlerPrimaryButtonLeft = false;
 			}
 		}
 

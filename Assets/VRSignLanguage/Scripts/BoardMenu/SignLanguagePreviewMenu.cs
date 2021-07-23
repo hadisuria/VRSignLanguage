@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Video;
@@ -52,8 +50,15 @@ public class SignLanguagePreviewMenu : MonoBehaviour, IBoardMenu
 
 	private void SetVideo()
 	{
-		videoPlayer.clip = Resources.Load<VideoClip>("Video/" + targetGuideBall.word);
+		try
+		{
+			videoPlayer.clip = Resources.Load<VideoClip>("Video/" + targetGuideBall.word);
 
-		videoPlayer.Play();
+			videoPlayer.Play();
+		}
+		catch (Exception e)
+		{
+			Debug.Log(e);
+		}
 	}
 }
