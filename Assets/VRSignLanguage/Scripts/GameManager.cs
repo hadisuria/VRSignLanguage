@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
 	public SignLanguageDictionary languageDictionary = new SignLanguageDictionary();
  
 
-	private void Start()
+	private void Awake()
 	{
 		SaveSystem.Init();
 		calibrateMenuButton.OnButtonClicked += ShowCalibrationMenu;

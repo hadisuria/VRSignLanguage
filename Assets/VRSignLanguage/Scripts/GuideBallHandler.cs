@@ -111,16 +111,16 @@ public class GuideBallHandler : MonoBehaviour
 		for (int i = 0; i < leftGuideBall.Count; i++)
 		{
 			calculatedLeftGuideBall.Add(new Vector3(
-                leftGuideBall[i].x / gameManager.maxXReach, 
-                leftGuideBall[i].y / gameManager.headLevelHeight, 
-                leftGuideBall[i].z / gameManager.maxHandDistance));
+                leftGuideBall[i].x / gameManager.savedCalibratedData.maxXReach, 
+                leftGuideBall[i].y / gameManager.savedCalibratedData.headLevelHeight, 
+                leftGuideBall[i].z / gameManager.savedCalibratedData.maxHandDistance));
 		}
 		for (int i = 0; i < rightGuideBall.Count; i++)
 		{
 			calculatedRightGuideBall.Add(new Vector3(
-                rightGuideBall[i].x / gameManager.maxXReach, 
-                rightGuideBall[i].y / gameManager.headLevelHeight, 
-                rightGuideBall[i].z / gameManager.maxHandDistance));
+                rightGuideBall[i].x / gameManager.savedCalibratedData.maxXReach, 
+                rightGuideBall[i].y / gameManager.savedCalibratedData.headLevelHeight, 
+                rightGuideBall[i].z / gameManager.savedCalibratedData.maxHandDistance));
 		}
         return (calculatedLeftGuideBall, calculatedRightGuideBall);
 	}

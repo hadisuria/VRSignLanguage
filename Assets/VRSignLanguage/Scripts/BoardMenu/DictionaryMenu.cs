@@ -11,7 +11,7 @@ public class DictionaryMenu : MonoBehaviour, IBoardMenu
 
 	private bool initialized = false;
 	[SerializeField] private ButtonEvent backButton;
-
+	[SerializeField] private WordListControl wordListControl;
 
 	public void Hide()
 	{
@@ -30,6 +30,7 @@ public class DictionaryMenu : MonoBehaviour, IBoardMenu
 	public void Show()
 	{
 		gameObject.SetActive(true);
+		wordListControl.GenerateWordList();
 	}
 
 	private void BackButton_OnButtonHit()
