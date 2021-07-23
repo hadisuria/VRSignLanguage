@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
 	public float maxXReach { get; private set; }
 
 	// To store saved / loaded calibratedData
-	private SavedCalibratedData savedCalibratedData;
+	public SavedCalibratedData savedCalibratedData { get; private set; }
 
 
 	// testing

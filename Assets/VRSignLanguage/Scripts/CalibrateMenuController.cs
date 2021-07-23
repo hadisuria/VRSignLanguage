@@ -14,6 +14,8 @@ public class CalibrateMenuController : MonoBehaviour, IBoardMenu
 
 	[SerializeField] private ButtonEvent closeButton;
 
+	private GameManager gameManager;
+
 	//void Start()
  //   {
 	//	closeButton.OnCloseButtonHit += HideCalibrationMenu;
@@ -69,6 +71,17 @@ public class CalibrateMenuController : MonoBehaviour, IBoardMenu
 	{
 		//isActive = false;
 		gameObject.SetActive(false);
+	}
+
+	private void Awake()
+	{
+		gameManager = FindObjectOfType<GameManager>();
+	}
+
+	private void Update()
+	{
+		if (gameManager.savedCalibratedData != null)
+			closeButton.gameObject.SetActive(true);
 	}
 
 	private void OnDestroy()
