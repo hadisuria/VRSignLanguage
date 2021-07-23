@@ -79,7 +79,7 @@ public class GameManager : MonoBehaviour
 
 		if(vrInputModule.mainController == OVRInput.Controller.RTouch)
 		{
-			if (rightPrimaryButton != prevInputHandlerPrimaryButtonRight)
+			if (rightPrimaryButton != prevInputHandlerPrimaryButtonRight && rightPrimaryButton)
 			{
 				prevInputHandlerPrimaryButtonRight = rightPrimaryButton;
 				// outdated
@@ -93,7 +93,7 @@ public class GameManager : MonoBehaviour
 		}
 		else if(vrInputModule.mainController == OVRInput.Controller.LTouch)
 		{
-			if (leftPrimaryButton != prevInputHandlerPrimaryButtonLeft)
+			if (leftPrimaryButton != prevInputHandlerPrimaryButtonLeft && leftPrimaryButton)
 			{
 				prevInputHandlerPrimaryButtonLeft = leftPrimaryButton;
 				// outdated
