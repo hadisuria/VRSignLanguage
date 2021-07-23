@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
 	[SerializeField] private BoardMenuController menuController;
 	[SerializeField] private Transform[] keyPositions;
 
+	private bool prevInputHandlerPrimaryButtonLeft = false;
+	private bool prevInputHandlerPrimaryButtonRight = false;
 	public static bool isRayActive { get; private set; }
 	[SerializeField] private VRInputModule vrInputModule;
 
@@ -43,30 +45,64 @@ public class GameManager : MonoBehaviour
 
 	private void Update()
 	{
+		
 		if (menuController.currMenu.menuID == BoardMenuID.CalibrateMenu)
 		{
 			if (inputHandler.GetRightHandController().secondaryButton && inputHandler.GetLeftHandController().secondaryButton)
 				StartCalibrate();
 		}
 
+		HandleRayActive();
+		
+
+		// OUTDATED DELETE LATER
+		// // if (Input.GetMouseButtonDown(0))
+		// // {
+		// // 	RaycastHit hit;
+		// // 	Ray rayLineOut = Camera.main.ScreenPointToRay(Input.mousePosition);
+		// // 	if (Physics.Raycast(rayLineOut, out hit))
+		// // 	{
+		// // 		// set the game object to the gameObject that the raycast hit
+		// // 		var pointedObject = hit.collider.gameObject;
+		// // 		if (pointedObject.TryGetComponent<IInteractableObject>(out var target))
+		// // 		{
+		// // 			target.ExecuteInteractHit();
+		// // 		}
+		// // 	}
+		// // }
+	}
+
+	private void HandleRayActive() {
+		bool rightPrimaryButton =  inputHandler.GetRightHandController().primaryButton;
+		bool leftPrimaryButton = inputHandler.GetLeftHandController().primaryButton;
+
+
 		if(vrInputModule.mainController == OVRInput.Controller.RTouch)
 		{
-			if (inputHandler.GetRightHandController().primaryButton)
+			if (rightPrimaryButton != prevInputHandlerPrimaryButtonRight)
 			{
-				if (!isRayActive)
-					isRayActive = true;
-				else
-					isRayActive = false;
+				prevInputHandlerPrimaryButtonRight = rightPrimaryButton;
+				// outdated
+				// // if (!isRayActive)
+				// // 	isRayActive = true;
+				// // else
+				// // 	isRayActive = false;
+				// Simplified Code
+				isRayActive = !isRayActive;
 			}
 		}
 		else if(vrInputModule.mainController == OVRInput.Controller.LTouch)
 		{
-			if (inputHandler.GetLeftHandController().primaryButton)
+			if (leftPrimaryButton != prevInputHandlerPrimaryButtonLeft)
 			{
-				if (!isRayActive)
-					isRayActive = true;
-				else
-					isRayActive = false;
+				prevInputHandlerPrimaryButtonLeft = leftPrimaryButton;
+				// outdated
+				// // if (!isRayActive)
+				// // 	isRayActive = true;
+				// // else
+				// // 	isRayActive = false;
+				// Simplified Code
+				isRayActive = !isRayActive;
 			}
 		}
 
@@ -92,21 +128,6 @@ public class GameManager : MonoBehaviour
 
 		//	vrInputModule.mainController = OVRInput.Controller.LTouch;
 		//}
-
-		if (Input.GetMouseButtonDown(0))
-		{
-			RaycastHit hit;
-			Ray rayLineOut = Camera.main.ScreenPointToRay(Input.mousePosition);
-			if (Physics.Raycast(rayLineOut, out hit))
-			{
-				// set the game object to the gameObject that the raycast hit
-				var pointedObject = hit.collider.gameObject;
-				if (pointedObject.TryGetComponent<IInteractableObject>(out var target))
-				{
-					target.ExecuteInteractHit();
-				}
-			}
-		}
 	}
 
 	private void SaveCalibratedData(SavedCalibratedData savedCalibratedDataObj)
