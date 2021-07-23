@@ -32,16 +32,18 @@ public class SignLanguageDictionary
 		if (saveString != null)
 		{
 			SignLanguageDictionary savedGuideBallDataObj = JsonUtility.FromJson<SignLanguageDictionary>(saveString);
-			this.guideBallDataList = savedGuideBallDataObj.guideBallDataList;
+			guideBallDataList = savedGuideBallDataObj.guideBallDataList;
 		}
 	}
 
 	public void AddWord(GuideBall newGuideBall)
 	{
-		this.guideBallDataList.Add(newGuideBall);
+		guideBallDataList.Add(newGuideBall);
 		// Savedata
 		string json = JsonUtility.ToJson(this, true);
 		SaveSystem.SaveData(json, SaveSystem.SAVE_SIGN_LANGUAGE_DICTIONARY);
+
+		LoadData();
 	}
 
 	//public SignLanguageDictionary(List<GuideBall> savedGuideBallData)
