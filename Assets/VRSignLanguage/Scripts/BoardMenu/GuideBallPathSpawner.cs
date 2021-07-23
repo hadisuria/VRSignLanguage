@@ -30,6 +30,7 @@ public class GuideBallPathSpawner : MonoBehaviour
 	void Start()
 	{
 		gameManager = FindObjectOfType<GameManager>();
+		InitBall();
 	}
 
 	public void InitBall()
