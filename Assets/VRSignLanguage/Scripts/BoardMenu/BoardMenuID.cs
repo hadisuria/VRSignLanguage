@@ -5,5 +5,6 @@
 	DictionaryMenu,
 	LearnMenu,
 	InputWordMenu,
-	CalibrateMenu
+	CalibrateMenu,
+	SignLanguagePreview
 }

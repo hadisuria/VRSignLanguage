@@ -5,7 +5,7 @@ public class MainMenu : MonoBehaviour, IBoardMenu
 {
 	#region IBoardMenu
 	public BoardMenuID menuID { get; } = BoardMenuID.MainMenu;
-	public event Action<BoardMenuID> OnRequestingOpenMenu;
+	public event Action<BoardMenuID, object> OnRequestingOpenMenu;
 	#endregion
 
 	private bool initalized = false;
@@ -14,7 +14,7 @@ public class MainMenu : MonoBehaviour, IBoardMenu
 	[SerializeField] ButtonEvent inputWordButton;
 	[SerializeField] ButtonEvent exitButton;
 
-	public void Initialize()
+	public void Initialize(params object[] arguments)
 	{
 		if (!initalized)
 		{
@@ -38,17 +38,17 @@ public class MainMenu : MonoBehaviour, IBoardMenu
 
 	private void InputWordButton_OnButtonHit()
 	{
-		OnRequestingOpenMenu?.Invoke(BoardMenuID.InputWordMenu);
+		OnRequestingOpenMenu?.Invoke(BoardMenuID.InputWordMenu, null);
 	}
 
 	private void LearnButton_OnButtonHit()
 	{
-		OnRequestingOpenMenu?.Invoke(BoardMenuID.LearnMenu);
+		OnRequestingOpenMenu?.Invoke(BoardMenuID.LearnMenu, null);
 	}
 
 	private void DictionaryButton_OnButtonHit()
 	{
-		OnRequestingOpenMenu?.Invoke(BoardMenuID.DictionaryMenu);
+		OnRequestingOpenMenu?.Invoke(BoardMenuID.DictionaryMenu, null);
 	}
 
 	private void ExitGame()

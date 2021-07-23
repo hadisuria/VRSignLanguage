@@ -6,7 +6,7 @@ public class CalibrateMenuController : MonoBehaviour, IBoardMenu
 	#region IBoardMenu
 	public BoardMenuID menuID { get; } = BoardMenuID.CalibrateMenu;
 
-	public event Action<BoardMenuID> OnRequestingOpenMenu;
+	public event Action<BoardMenuID, object> OnRequestingOpenMenu;
 	#endregion
 
 	private bool initialized = false;
@@ -39,7 +39,7 @@ public class CalibrateMenuController : MonoBehaviour, IBoardMenu
  //       gameObject.SetActive(isActive);
  //   }
 
-	public void Initialize()
+	public void Initialize(params object[] arguments)
 	{
 		if (!initialized)
 		{
@@ -50,7 +50,7 @@ public class CalibrateMenuController : MonoBehaviour, IBoardMenu
 
 	private void CloseButton_OnButtonHit()
 	{
-		OnRequestingOpenMenu?.Invoke(BoardMenuID.MainMenu);
+		OnRequestingOpenMenu?.Invoke(BoardMenuID.MainMenu, null);
 	}
 
 	public void Show()

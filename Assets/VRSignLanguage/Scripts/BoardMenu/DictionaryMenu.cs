@@ -6,7 +6,7 @@ public class DictionaryMenu : MonoBehaviour, IBoardMenu
 	#region IBoardMenu
 	public BoardMenuID menuID { get; } = BoardMenuID.DictionaryMenu;
 
-	public event Action<BoardMenuID> OnRequestingOpenMenu;
+	public event Action<BoardMenuID, object> OnRequestingOpenMenu;
 	#endregion
 
 	private bool initialized = false;
@@ -18,7 +18,7 @@ public class DictionaryMenu : MonoBehaviour, IBoardMenu
 		gameObject.SetActive(false);
 	}
 
-	public void Initialize()
+	public void Initialize(params object[] arguments)
 	{
 		if (!initialized)
 		{
@@ -34,7 +34,7 @@ public class DictionaryMenu : MonoBehaviour, IBoardMenu
 
 	private void BackButton_OnButtonHit()
 	{
-		OnRequestingOpenMenu?.Invoke(BoardMenuID.Previous);
+		OnRequestingOpenMenu?.Invoke(BoardMenuID.Previous, null);
 	}
 
 	private void OnDestroy()

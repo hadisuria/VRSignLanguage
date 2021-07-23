@@ -1,9 +1,9 @@
 ﻿public interface IBoardMenu
 {
     BoardMenuID menuID { get; }
-    event System.Action<BoardMenuID> OnRequestingOpenMenu;
+    event System.Action<BoardMenuID, object> OnRequestingOpenMenu;
 
-    void Initialize();
+    void Initialize(params object[] arguments);
     void Show();
     void Hide();
 }

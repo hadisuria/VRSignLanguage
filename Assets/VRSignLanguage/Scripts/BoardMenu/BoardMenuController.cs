@@ -7,7 +7,7 @@ public class BoardMenuController : MonoBehaviour
     private IBoardMenu prevMenu;
     private Dictionary<BoardMenuID, IBoardMenu> cachedBoardMenus = new Dictionary<BoardMenuID, IBoardMenu>();
 
-    public void OpenMenu(BoardMenuID targetMenuId)
+	public void OpenMenu(BoardMenuID targetMenuId, object additionalData = null)
 	{
 		if(cachedBoardMenus.Count > 0)
 		{
@@ -15,12 +15,12 @@ public class BoardMenuController : MonoBehaviour
 			{
 				currMenu.Hide();
 				currMenu.Show();
-				currMenu.Initialize();
+				currMenu.Initialize(additionalData);
 			}
 			else if(targetMenuId == BoardMenuID.Previous)
 			{
 				prevMenu.Show();
-				prevMenu.Initialize();
+				prevMenu.Initialize(additionalData);
 				currMenu.Hide();
 
 				var temp = prevMenu;
@@ -35,7 +35,7 @@ public class BoardMenuController : MonoBehaviour
 					cachedBoardMenus[targetMenuId].OnRequestingOpenMenu += OpenMenu;
 				}
 				cachedBoardMenus[targetMenuId].Show();
-				cachedBoardMenus[targetMenuId].Initialize();
+				cachedBoardMenus[targetMenuId].Initialize(additionalData);
 				currMenu.Hide();
 
 				prevMenu = currMenu;
@@ -48,7 +48,7 @@ public class BoardMenuController : MonoBehaviour
 			cachedBoardMenus.Add(targetMenuId, Instantiate(Resources.Load<GameObject>("Menu/" + targetMenuId.ToString()), transform).GetComponent<IBoardMenu>());
 			cachedBoardMenus[targetMenuId].OnRequestingOpenMenu += OpenMenu;
 			cachedBoardMenus[targetMenuId].Show();
-			cachedBoardMenus[targetMenuId].Initialize();
+			cachedBoardMenus[targetMenuId].Initialize(additionalData);
 
 			currMenu = cachedBoardMenus[targetMenuId];
 		}

@@ -8,7 +8,7 @@ public class InputWordMenu : MonoBehaviour, IBoardMenu
 	#region IBoardMenu
 	public BoardMenuID menuID { get; } = BoardMenuID.InputWordMenu;
 
-	public event Action<BoardMenuID> OnRequestingOpenMenu;
+	public event Action<BoardMenuID, object> OnRequestingOpenMenu;
 	#endregion
 
 	private bool initialized = false;
@@ -25,7 +25,7 @@ public class InputWordMenu : MonoBehaviour, IBoardMenu
 		gameObject.SetActive(false);
 	}
 
-	public void Initialize()
+	public void Initialize(params object[] arguments)
 	{
 		if (!initialized)
 		{
@@ -46,7 +46,7 @@ public class InputWordMenu : MonoBehaviour, IBoardMenu
 	{
 		ballHandler.ResetList();
 		typedWord.text = "";
-		OnRequestingOpenMenu?.Invoke(BoardMenuID.Previous);
+		OnRequestingOpenMenu?.Invoke(BoardMenuID.Previous, null);
 	}
 
 	private void InputWordButton_OnButtonHit()
