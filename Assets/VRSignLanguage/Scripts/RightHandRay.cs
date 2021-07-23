@@ -39,7 +39,7 @@ public class RightHandRay : MonoBehaviour
 
         if( handRight.primaryButton ){
             toggled = true;
-             rightHandRayLine.enabled = true;
+            rightHandRayLine.enabled = true;
 
         } else {
             rightHandRayLine.enabled = false;
