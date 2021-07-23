@@ -29,14 +29,7 @@ public class SignLanguagePreviewMenu : MonoBehaviour, IBoardMenu
 	{
 		targetGuideBall = (GuideBall) arguments[0];
 		guideBallPathSpawner.SetGuideBallData(targetGuideBall);
-		try
-		{
-			guideBallPathSpawner.InitBall();
-		}
-		catch(Exception e)
-		{
-			Debug.Log("Error : " + e);
-		}
+		guideBallPathSpawner.InitBall();
 
 		wordText.text = targetGuideBall.word;
 

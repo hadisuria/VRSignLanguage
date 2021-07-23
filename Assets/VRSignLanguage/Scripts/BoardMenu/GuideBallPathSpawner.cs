@@ -72,14 +72,23 @@ public class GuideBallPathSpawner : MonoBehaviour
 		}
 		leftBallRendererList.Clear();
 		rightBallRendererList.Clear();
+		isLeftFinished = true;
+		isRightFinished = true;
 	}
 
 	private IEnumerator SpawnGuideBall(List<Vector3> guideBallPath, Position targetPos)
 	{
-		SavedCalibratedData calibratedData = new SavedCalibratedData(gameManager.savedCalibratedData);
+		SavedCalibratedData calibratedData = null;
+		try
+		{
+			calibratedData = new SavedCalibratedData(gameManager.savedCalibratedData);
+		}
+		catch(System.Exception e)
+		{
+			Debug.Log("Error : " + e);
+		}
 
-
-		if (guideBallPath.Count > 0)
+		if (guideBallPath.Count > 0 && calibratedData != null)
 		{
 			for (int i=0; i < guideBallPath.Count; i++)
 			{
