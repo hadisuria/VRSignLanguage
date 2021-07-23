@@ -30,6 +30,10 @@ public class GuideBallPathSpawner : MonoBehaviour
 	void Start()
 	{
 		gameManager = FindObjectOfType<GameManager>();
+	}
+
+	public void InitBall()
+	{
 		List<Vector3> leftGuideBallData = new List<Vector3>(guideBallData.leftHandPath);
 		List<Vector3> rightGuideBallData = new List<Vector3>(guideBallData.rightHandPath);
 
