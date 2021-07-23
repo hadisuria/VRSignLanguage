@@ -15,17 +15,20 @@ public class SignLanguagePreviewMenu : MonoBehaviour, IBoardMenu
 	[SerializeField] private VideoPlayer videoPlayer;
 	[SerializeField] private TextMeshProUGUI wordText;
 	[SerializeField] private ButtonEvent backButton;
+	[SerializeField] private GuideBallPathSpawner guideBallPathSpawner;
 
 	private GuideBall targetGuideBall;
 
 	public void Hide()
 	{
+		guideBallPathSpawner.ResetData();
 		gameObject.SetActive(false);
 	}
 
 	public void Initialize(params object[] arguments)
 	{
 		targetGuideBall = (GuideBall) arguments[0];
+		guideBallPathSpawner.SetGuideBallData(targetGuideBall);
 
 		wordText.text = targetGuideBall.word;
 

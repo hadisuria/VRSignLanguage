@@ -343,6 +343,7 @@ MonoBehaviour:
   videoPlayer: {fileID: 8650410744477692270}
   wordText: {fileID: 8650410744542282636}
   backButton: {fileID: 7340914824589609665}
+  guideBallPathSpawner: {fileID: 8974375249599824987}
 --- !u!114 &8974375249599824987
 MonoBehaviour:
   m_ObjectHideFlags: 0

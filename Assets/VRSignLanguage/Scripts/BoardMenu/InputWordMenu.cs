@@ -18,7 +18,8 @@ public class InputWordMenu : MonoBehaviour, IBoardMenu
 	[SerializeField] private TMP_InputField typedWord;
 
 	[SerializeField] private GuideBallHandler ballHandler;
-	private SignLanguageDictionary languageDictionary = new SignLanguageDictionary();
+	//private SignLanguageDictionary languageDictionary = new SignLanguageDictionary();
+	private GameManager gameManager;
 
 	public void Hide()
 	{
@@ -34,6 +35,7 @@ public class InputWordMenu : MonoBehaviour, IBoardMenu
 			resetButton.OnButtonClicked += ResetButton_OnButtonHit;
 			inputWordButton.OnButtonClicked += InputWordButton_OnButtonHit;
 			backButton.OnButtonClicked += BackButton_OnButtonHit;
+			gameManager = FindObjectOfType<GameManager>();
 			initialized = true;
 		}
 	}
@@ -56,7 +58,7 @@ public class InputWordMenu : MonoBehaviour, IBoardMenu
 		{
 			(List<Vector3> leftTemp, List<Vector3> rightTemp) = ballHandler.CalculateOffset();
 			GuideBall tempBall = new GuideBall(typedWord.text, leftTemp, rightTemp);
-			languageDictionary.AddWord(tempBall);
+			gameManager.languageDictionary.AddWord(tempBall);
 			ballHandler.ResetList();
 			Debug.Log($"Guide Ball Data Saved With \"{typedWord.text}\"") ;
 			typedWord.text = "";

@@ -685,7 +685,7 @@ MonoBehaviour:
   resetButton: {fileID: 1769934625164533870}
   inputWordButton: {fileID: 1190545740755098543}
   backButton: {fileID: 3457542577138110781}
-  typedWord: {fileID: 6667480629445893415}
+  typedWord: {fileID: 6667480630242512898}
   ballHandler: {fileID: 8262431037144340789}
 --- !u!114 &8262431037144340789
 MonoBehaviour:
@@ -699,6 +699,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70b064487db7f4246922d7dd5e56291f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerLeftController: {fileID: 0}
+  playerRightController: {fileID: 0}
   saveIntervalTime: 0.1
   holdToSave: 1
 --- !u!1 &6667480629921407042

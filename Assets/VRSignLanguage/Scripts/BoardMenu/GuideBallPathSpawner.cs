@@ -50,7 +50,12 @@ public class GuideBallPathSpawner : MonoBehaviour
 		}
 	}
 
-	private void ResetData()
+	public void SetGuideBallData(GuideBall value)
+	{
+		guideBallData = value;
+	}
+
+	public void ResetData()
 	{
 		for(int i = 0; i < leftBallRendererList.Count; i++)
 		{

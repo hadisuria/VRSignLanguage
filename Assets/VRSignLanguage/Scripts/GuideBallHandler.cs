@@ -8,8 +8,8 @@ public class GuideBallHandler : MonoBehaviour
     private VRInputHandler inputHandler;
     private ControllerData leftController;
     private ControllerData rightController;
-    [SerializeField] private Transform playerLeftController;
-    [SerializeField] private Transform playerRightController;
+    private Transform playerLeftController;
+    private Transform playerRightController;
 
     private List<GameObject> spawnedBall = new List<GameObject>();
     private List<Vector3> leftGuideBall = new List<Vector3>();
