@@ -25,6 +25,7 @@ public class DictionaryMenu : MonoBehaviour, IBoardMenu
 			backButton.OnButtonClicked += BackButton_OnButtonHit;
 			initialized = true;
 		}
+		// Generate Everytime Menu Open (Testing purpose only, should only generate at start on production)
 		wordListControl.GenerateWordList();
 	}
 

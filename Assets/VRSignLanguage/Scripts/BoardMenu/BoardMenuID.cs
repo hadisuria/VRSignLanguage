@@ -6,5 +6,6 @@
 	LearnMenu,
 	InputWordMenu,
 	CalibrateMenu,
-	SignLanguagePreview
+	SignLanguagePreview,
+	MultipleChoices
 }

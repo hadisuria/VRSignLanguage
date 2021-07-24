@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
-using TMPro;
 
 [RequireComponent(typeof(ButtonEvent))]
 public class WordButton : MonoBehaviour
@@ -26,12 +22,12 @@ public class WordButton : MonoBehaviour
         myGuideBall = value;
     }
 
-    public void SetText(string textString){
+    private void SetText(string textString){
         //myTextString = textString;
         myString.text = textString;
     }
 
-    public void OnWordClicked(){
+    private void OnWordClicked(){
         //wordListControl.ButtonClick(myTextString);
         menuController.OpenMenu(BoardMenuID.SignLanguagePreview, myGuideBall);
         Debug.Log("Show Word : " + $"{myGuideBall.word}");

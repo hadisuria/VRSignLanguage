@@ -12,7 +12,7 @@ public class WordListControl : MonoBehaviour
     public void GenerateWordList(){
 
         //test debug
-        Reset();
+        ResetData();
         Debug.Log("(Generating WordList) Game manager" + gameManager.languageDictionary.guideBallDataList.Count);
         if (gameManager == null)
             gameManager = FindObjectOfType<GameManager>();
@@ -34,16 +34,7 @@ public class WordListControl : MonoBehaviour
 
     }
 
-    private void ShowWordDetail()
-    {
-        Debug.Log("Showing Word Detail Here. . .");
-    }
-
-    public void ButtonClick(string myText){
-        Debug.Log(myText);
-    }
-
-    private void Reset(){
+    private void ResetData(){
         if(buttons.Count > 0 ){
             foreach(WordButton button in buttons){
                 Destroy(button.gameObject); 

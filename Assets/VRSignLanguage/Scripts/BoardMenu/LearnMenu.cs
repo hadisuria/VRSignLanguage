@@ -11,6 +11,7 @@ public class LearnMenu : MonoBehaviour, IBoardMenu
 
 	private bool initialized = false;
 	[SerializeField] private ButtonEvent backButton;
+	[SerializeField] private WordSectionControl sectionControl;
 
 	public void Hide()
 	{
@@ -24,6 +25,8 @@ public class LearnMenu : MonoBehaviour, IBoardMenu
 			backButton.OnButtonClicked += BackButton_OnButtonHit;
 			initialized = true;
 		}
+		// Generate Section Everytime Menu Open (Testing purpose only, should only generaate at start on productiona)
+		sectionControl.GenerateSection();
 	}
 
 	public void Show()

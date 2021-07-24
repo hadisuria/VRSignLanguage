@@ -1,58 +1,57 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using TMPro;
 
 
 public class WordSectionControl : MonoBehaviour
 {
-    private List<GameObject> buttons;
+    private List<WordSectionButton> buttons = new List<WordSectionButton>();
+    [SerializeField] private int dataPerSection = 5;
 
+    private List<List<GuideBall>> wordSections = new List<List<GuideBall>>();
+    private GameManager gameManager;
 
-    // generate mock data || Delete later
-    private List<string> mockData = new List<string>();
-
-    void Start(){
-        // generate mock data for testing purpose
-        GenerateMockData();
-        GenerateWordSection();
+    private void Awake(){
+        gameManager = FindObjectOfType<GameManager>();
     }
 
-    private void GenerateMockData(){
-        mockData.Add("Test 1");
-        mockData.Add("Test 2");
-        mockData.Add("Test 3");
-        mockData.Add("Test 4");
-        mockData.Add("Test 5");
+    public void GenerateSection()
+    {
+        ResetData();
+        // function to generate section of question / words
+        List<GuideBall> guideBallData = new List<GuideBall>();
+        if (gameManager == null)
+            gameManager = FindObjectOfType<GameManager>();
+
+        guideBallData = gameManager.languageDictionary.guideBallDataList;
+
+        List<GuideBall> tempGuideBallList = new List<GuideBall>();
+
+        int currSection = 0;
+        for (int i = 0; i < guideBallData.Count; i++)
+        {
+            tempGuideBallList.Add(guideBallData[i]);
+            if ((i + 1) % dataPerSection == 0)
+            {
+                currSection++;
+                wordSections.Add(tempGuideBallList);
+                WordSectionButton temp = Instantiate(Resources.Load<GameObject>("WordSectionButton"), transform).GetComponent<WordSectionButton>();
+                temp.gameObject.SetActive(true);
+                temp.Init(wordSections[currSection], $"Section {currSection}");
+                buttons.Add(temp);
+                tempGuideBallList.Clear();
+            }
+        }
     }
-    //
 
-    public void GenerateWordSection(){
-
-        buttons = new List<GameObject>();
-
-        if(buttons.Count > 0 ){
-            foreach(GameObject button in buttons){
-                Destroy(button.gameObject); 
+    private void ResetData()
+	{
+        if (buttons.Count > 0)
+        {
+            foreach (WordSectionButton button in buttons)
+            {
+                Destroy(button.gameObject);
             }
             buttons.Clear();
         }
-
-        for (int i = 0; i < mockData.Count; i++) 
-		{
-            // not fixed logic & update later
-            GameObject temp = Instantiate(Resources.Load<GameObject>("WordSectionButton"), transform);
-            temp.SetActive(true);
-            temp.GetComponentInChildren<TextMeshProUGUI>().text =  (i+1) + ". " + mockData[i];
-
-			//temp.transform.SetParent (transform, false);
-		}
-
     }
-
-    public void ButtonClick(string myText){
-        Debug.Log(myText);
-    }
-
 }

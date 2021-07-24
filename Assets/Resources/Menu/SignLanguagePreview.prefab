@@ -359,7 +359,7 @@ MonoBehaviour:
   leftActiveColor: {r: 1, g: 0.5, b: 0.5, a: 1}
   rightActiveColor: {r: 0.5, g: 0.5, b: 1, a: 1}
   spawnDelay: 0.1
-  colorChangeInterval: 0.1
+  colorChangeInterval: 0.3
 --- !u!1 &8650410744477692266
 GameObject:
   m_ObjectHideFlags: 0
