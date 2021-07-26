@@ -46,6 +46,7 @@ public class MultipleChoicesMenu : MonoBehaviour, IBoardMenu
 			}
 			isInitalized = true;
 		}
+		Debug.Log("Arguments Length: " + arguments.Count + "\nArguments Isi: ", JsonUtility.ToJSON.arguments[0]);
 		Debug.Log("object type : " + ((List<GuideBall>)arguments[0]).Count);
 		currSection = (List<GuideBall>)arguments[0];
 		Debug.Log("Curr Section Count : " + currSection.Count);

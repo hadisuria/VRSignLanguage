@@ -34,6 +34,7 @@ public class WordSectionControl : MonoBehaviour
             {
                 wordSections.Add(tempGuideBallList);
                 Debug.Log("wordSection Count : " + wordSections.Count + " ===== current word section count : " + wordSections[currSection].Count);
+                Debug.Log("WordSection JSON: ", JsonUtility.ToJson(wordSections));
                 WordSectionButton temp = Instantiate(Resources.Load<GameObject>("WordSectionButton"), transform).GetComponent<WordSectionButton>();
                 temp.gameObject.SetActive(true);
                 temp.Init(wordSections[currSection], $"Section {currSection}");
