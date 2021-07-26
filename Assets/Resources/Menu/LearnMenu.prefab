@@ -196,6 +196,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d1d40a41e94fad46acdeb18795ca50c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dataPerSection: 5
 --- !u!1 &5044702913812568581
 GameObject:
   m_ObjectHideFlags: 0
@@ -408,6 +409,7 @@ GameObject:
   - component: {fileID: 6609692139199014549}
   - component: {fileID: 6609692139199014548}
   - component: {fileID: 6609692139199014555}
+  - component: {fileID: 5272482174078785390}
   m_Layer: 5
   m_Name: LearnMenu
   m_TagString: Untagged
@@ -510,6 +512,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   backButton: {fileID: 3033323797645444576}
+  sectionControl: {fileID: 5272482174078785390}
+--- !u!114 &5272482174078785390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6609692139199014550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d1d40a41e94fad46acdeb18795ca50c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dataPerSection: 5
 --- !u!1 &6609692139770049973
 GameObject:
   m_ObjectHideFlags: 0
