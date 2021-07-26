@@ -7,7 +7,7 @@ public class WordSectionButton : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI myString;
 	private ButtonEvent button;
-    private List<GuideBall> section;
+    private List<GuideBall> section = new List<GuideBall>();
 
 	private BoardMenuController menuController;
 
