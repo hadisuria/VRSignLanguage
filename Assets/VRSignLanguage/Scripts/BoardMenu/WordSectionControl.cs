@@ -37,7 +37,7 @@ public class WordSectionControl : MonoBehaviour
                 Debug.Log("WordSection JSON: " + wordSections[0][0].word);
                 WordSectionButton temp = Instantiate(Resources.Load<GameObject>("WordSectionButton"), transform).GetComponent<WordSectionButton>();
                 temp.gameObject.SetActive(true);
-                temp.Init(currSection, $"Section {currSection}");
+                temp.Init(wordSections[currSection], $"Section {currSection}");
                 buttons.Add(temp);
                 tempGuideBallList.Clear();
                 currSection++;

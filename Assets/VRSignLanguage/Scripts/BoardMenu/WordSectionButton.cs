@@ -9,6 +9,7 @@ public class WordSectionButton : MonoBehaviour
 	private ButtonEvent button;
     //private List<GuideBall> section = new List<GuideBall>();
     private int section;
+	private SectionData mySection = new SectionData();
 
 	private BoardMenuController menuController;
 
@@ -19,7 +20,7 @@ public class WordSectionButton : MonoBehaviour
 		menuController = FindObjectOfType<BoardMenuController>();
 	}
 
-	public void Init(int targetValue, string text)
+	public void Init(List<GuideBall> targetValue, string text)
 	{
 		SetText(text);
 		SetSection(targetValue);
@@ -27,16 +28,17 @@ public class WordSectionButton : MonoBehaviour
 
 	private void Button_OnButtonClicked()
 	{
-		menuController.OpenMenu(BoardMenuID.MultipleChoices, section);
+		menuController.OpenMenu(BoardMenuID.MultipleChoices, mySection);
 	}
 
 	private void SetText(string textString){
         myString.text = textString;
     }
 
-    private void SetSection(int value)
+    private void SetSection(List<GuideBall> value)
 	{
-        section = value;
-		Debug.Log("section count : " + value + " ===== " + section);
+		mySection.sectionWordList = value;
+        //section = value;
+		Debug.Log("section count : " + value.Count + " ===== " + mySection.sectionWordList.Count);
 	}
 }

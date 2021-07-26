@@ -22,7 +22,7 @@ public class MultipleChoicesMenu : MonoBehaviour, IBoardMenu
 	[SerializeField] private SignLanguagePreviewMenu previewMenu;
 
 	private bool isInitalized = false;
-	private List<GuideBall> currSection = new List<GuideBall>();
+	private SectionData currSection = new SectionData();
 	private int currQuestionIndex = 0;
 
 	public void Hide()
@@ -48,8 +48,8 @@ public class MultipleChoicesMenu : MonoBehaviour, IBoardMenu
 			isInitalized = true;
 		}
 
-		currSection = WordSectionControl.wordSections[(int)arguments[0]];
-		Debug.Log("Current Section MCMENU: " + currSection.Count);
+		currSection = (SectionData) arguments[0];
+		Debug.Log("Current Section MCMENU: " + currSection.sectionWordList.Count);
 
 		SectionRandomizer();
 		PrepareQuestion(currQuestionIndex);
@@ -63,20 +63,20 @@ public class MultipleChoicesMenu : MonoBehaviour, IBoardMenu
 			b.gameObject.SetActive(false);
 		}
 
-		if(answer == currSection[currQuestionIndex].word)
+		if(answer == currSection.sectionWordList[currQuestionIndex].word)
 		{
 			// correct answer
-			answerText.text = "Your Answer is Correct!!! \n\n Correct Answer :\n" + currSection[currQuestionIndex].word;
+			answerText.text = "Your Answer is Correct!!! \n\n Correct Answer :\n" + currSection.sectionWordList[currQuestionIndex].word;
 		}
 		else
 		{
 			// wrong answer
-			answerText.text = "Your Answer is Incorrect!!! \n\n Correct Answer :\n" + currSection[currQuestionIndex].word;
+			answerText.text = "Your Answer is Incorrect!!! \n\n Correct Answer :\n" + currSection.sectionWordList[currQuestionIndex].word;
 		}
 		answerText.gameObject.SetActive(true);
 
 		previewMenu.Show();
-		previewMenu.Initialize(currSection[currQuestionIndex]);
+		previewMenu.Initialize(currSection.sectionWordList[currQuestionIndex]);
 	}
 
 	private void PrepareQuestion(int index)
@@ -84,7 +84,7 @@ public class MultipleChoicesMenu : MonoBehaviour, IBoardMenu
 		// prepare video
 		try
 		{
-			videoPlayer.clip = Resources.Load<VideoClip>("Video/" + currSection[index].word);
+			videoPlayer.clip = Resources.Load<VideoClip>("Video/" + currSection.sectionWordList[index].word);
 		}
 		catch(Exception e)
 		{
@@ -94,7 +94,7 @@ public class MultipleChoicesMenu : MonoBehaviour, IBoardMenu
 		videoPlayer.Play();
 
 		// prepare choices buttons
-		List<GuideBall> tempSection = currSection;
+		List<GuideBall> tempSection = currSection.sectionWordList;
 		List<string> tempString = new List<string>();
 		tempString.Add(tempSection[index].word);
 		tempSection.RemoveAt(index);
@@ -132,15 +132,15 @@ public class MultipleChoicesMenu : MonoBehaviour, IBoardMenu
 	private void SectionRandomizer()
 	{
 		List<GuideBall> temp = new List<GuideBall>();
-		for(int i = currSection.Count - 1; i >= 0; i--)
+		for(int i = currSection.sectionWordList.Count - 1; i >= 0; i--)
 		{
-			int randomIndex = UnityEngine.Random.Range(0, currSection.Count);
-			GuideBall tempData = currSection[randomIndex];
+			int randomIndex = UnityEngine.Random.Range(0, currSection.sectionWordList.Count);
+			GuideBall tempData = currSection.sectionWordList[randomIndex];
 			temp.Add(tempData);
-			currSection.RemoveAt(randomIndex);
+			currSection.sectionWordList.RemoveAt(randomIndex);
 		}
-		currSection.Clear();
-		currSection = AddSpacedRepetition(temp);
+		currSection.sectionWordList.Clear();
+		currSection.sectionWordList = AddSpacedRepetition(temp);
 	}
 
 
@@ -166,7 +166,7 @@ public class MultipleChoicesMenu : MonoBehaviour, IBoardMenu
 	private void NextButton_OnButtonClicked()
 	{
 		currQuestionIndex++;
-		if(currQuestionIndex == currSection.Count)
+		if(currQuestionIndex == currSection.sectionWordList.Count)
 		{
 			// finish section
 			OnRequestingOpenMenu?.Invoke(BoardMenuID.LearnMenu, null);
