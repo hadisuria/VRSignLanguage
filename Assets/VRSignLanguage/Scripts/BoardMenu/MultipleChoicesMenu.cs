@@ -98,11 +98,15 @@ public class MultipleChoicesMenu : MonoBehaviour, IBoardMenu
 		tempSection.RemoveAt(index);
 		int randomIndex;
 		for(int i = 1; i < choicesButtons.Count; i++)
-		{
-			randomIndex = UnityEngine.Random.Range(0, tempSection.Count);
+		{	
+			// find random index that doesn't exist in tempString
+			do{
+				randomIndex = UnityEngine.Random.Range(0, tempSection.Count);
+			} while(!tempString.Exists(e => e.Equals(tempSection[randomIndex].word)));
+			
 			// Add choosen random string to temporary string list
 			tempString.Add(tempSection[randomIndex].word);
-			// remove choosen list index from the temporary sectino list to prevent same choice later
+			// remove choosen list index from the temporary section list to prevent same choice later
 			tempSection.RemoveAt(randomIndex);
 		}
 
@@ -131,7 +135,27 @@ public class MultipleChoicesMenu : MonoBehaviour, IBoardMenu
 			currSection.Remove(tempData);
 		}
 		currSection.Clear();
-		currSection = temp;
+		currSection = AddSpacedRepetition(temp);
+	}
+
+
+	// function to add spaced repetition wannabe
+	private List<GuideBall> AddSpacedRepetition(List<GuideBall> currSectionQuestions) {
+		List<GuideBall> temp = new List<GuideBall>();
+		var rememberIndex = 0; // index to show current remember question index
+		var interval = 3; // interval show before question index
+
+		for(int i=0; i<currSectionQuestions.Count; i++){
+			// every interval add remember question into section question
+			if((i+1) > interval){
+				temp.Add(currSectionQuestions[rememberIndex]);
+				rememberIndex++;
+			}
+			// add every question to section question
+			temp.Add(currSectionQuestions[i]);
+		}
+		
+		return temp;
 	}
 
 	private void NextButton_OnButtonClicked()
