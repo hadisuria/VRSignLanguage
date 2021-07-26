@@ -48,8 +48,8 @@ public class MultipleChoicesMenu : MonoBehaviour, IBoardMenu
 			isInitalized = true;
 		}
 
-		Debug.Log("Current Section MCMENU: " + currSection.Count);
 		currSection = WordSectionControl.wordSections[(int)arguments[0]];
+		Debug.Log("Current Section MCMENU: " + currSection.Count);
 
 		SectionRandomizer();
 		PrepareQuestion(currQuestionIndex);
