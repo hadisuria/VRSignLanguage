@@ -47,8 +47,8 @@ public class MultipleChoicesMenu : MonoBehaviour, IBoardMenu
 			isInitalized = true;
 		}
 		currSection = (List<GuideBall>)arguments[0];
-		Debug.Log(currSection.Count);
-		for(int i = 0; i < currSection.Count; i++)
+		Debug.Log("Curr Section Count : " + currSection.Count);
+		for (int i = 0; i < currSection.Count; i++)
 		{
 			Debug.Log("Current Section Word : " + currSection[i].word);
 		}

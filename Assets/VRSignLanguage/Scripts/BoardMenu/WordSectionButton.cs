@@ -36,5 +36,6 @@ public class WordSectionButton : MonoBehaviour
     private void SetSection(List<GuideBall> value)
 	{
         section = value;
+		Debug.Log("section count : " + value.Count + " ===== " + section.Count);
 	}
 }
