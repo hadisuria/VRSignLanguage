@@ -46,8 +46,8 @@ public class MultipleChoicesMenu : MonoBehaviour, IBoardMenu
 			}
 			isInitalized = true;
 		}
-		//currSection = (List<GuideBall>)arguments[0];
-		currSection = ((IEnumerable<object>)arguments[0]).Cast<GuideBall>().ToList();
+		currSection = arguments[0] as List<GuideBall>;
+		//currSection = ((IEnumerable<object>)arguments[0]).Cast<GuideBall>().ToList();
 
 		SectionRandomizer();
 		PrepareQuestion(currQuestionIndex);
