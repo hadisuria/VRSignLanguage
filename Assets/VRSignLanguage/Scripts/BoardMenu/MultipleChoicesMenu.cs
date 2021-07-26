@@ -47,23 +47,8 @@ public class MultipleChoicesMenu : MonoBehaviour, IBoardMenu
 			}
 			isInitalized = true;
 		}
-		//Debug.Log("Arguments Length: " + arguments.Length + "\nArguments Isi: " + JsonUtility.ToJson(arguments[0]));
-		IList temp = arguments[0] as IList;
-		Debug.Log("List count : " + temp.Count);
-		foreach(var data in temp)
-		{
-			Debug.Log("word : " + ((GuideBall)data).word);
-			currSection.Add((GuideBall)data);
-			Debug.Log("currSection list count : " + currSection.Count());
-		}
-		currSection = ((IEnumerable)arguments[0]).Cast<GuideBall>().ToList();
 
-		//currSection = (List<GuideBall>)arguments[0];
-		Debug.Log("Curr Section Count : " + currSection.Count);
-		for (int i = 0; i < currSection.Count; i++)
-		{
-			Debug.Log("Current Section Word : " + currSection[i].word);
-		}
+		currSection = WordSectionControl.wordSections[(int)arguments[0]];
 
 		SectionRandomizer();
 		PrepareQuestion(currQuestionIndex);

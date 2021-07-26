@@ -7,7 +7,7 @@ public class WordSectionControl : MonoBehaviour
     private List<WordSectionButton> buttons = new List<WordSectionButton>();
     [SerializeField] private int dataPerSection = 5;
 
-    private List<List<GuideBall>> wordSections = new List<List<GuideBall>>();
+    public static List<List<GuideBall>> wordSections = new List<List<GuideBall>>();
     private GameManager gameManager;
 
     private void Awake(){
@@ -37,7 +37,7 @@ public class WordSectionControl : MonoBehaviour
                 Debug.Log("WordSection JSON: " + wordSections[0][0].word);
                 WordSectionButton temp = Instantiate(Resources.Load<GameObject>("WordSectionButton"), transform).GetComponent<WordSectionButton>();
                 temp.gameObject.SetActive(true);
-                temp.Init(wordSections[currSection], $"Section {currSection}");
+                temp.Init(currSection, $"Section {currSection}");
                 buttons.Add(temp);
                 tempGuideBallList.Clear();
                 currSection++;

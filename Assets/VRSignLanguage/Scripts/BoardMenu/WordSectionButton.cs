@@ -7,7 +7,8 @@ public class WordSectionButton : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI myString;
 	private ButtonEvent button;
-    private List<GuideBall> section = new List<GuideBall>();
+    //private List<GuideBall> section = new List<GuideBall>();
+    private int section;
 
 	private BoardMenuController menuController;
 
@@ -18,7 +19,7 @@ public class WordSectionButton : MonoBehaviour
 		menuController = FindObjectOfType<BoardMenuController>();
 	}
 
-	public void Init(List<GuideBall> targetValue, string text)
+	public void Init(int targetValue, string text)
 	{
 		SetText(text);
 		SetSection(targetValue);
@@ -33,9 +34,9 @@ public class WordSectionButton : MonoBehaviour
         myString.text = textString;
     }
 
-    private void SetSection(List<GuideBall> value)
+    private void SetSection(int value)
 	{
         section = value;
-		Debug.Log("section count : " + value.Count + " ===== " + section.Count);
+		Debug.Log("section count : " + value + " ===== " + section);
 	}
 }
