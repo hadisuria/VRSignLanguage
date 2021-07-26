@@ -32,13 +32,13 @@ public class WordSectionControl : MonoBehaviour
             tempGuideBallList.Add(guideBallData[i]);
             if ((i + 1) % dataPerSection == 0)
             {
-                currSection++;
                 wordSections.Add(tempGuideBallList);
                 WordSectionButton temp = Instantiate(Resources.Load<GameObject>("WordSectionButton"), transform).GetComponent<WordSectionButton>();
                 temp.gameObject.SetActive(true);
                 temp.Init(wordSections[currSection], $"Section {currSection}");
                 buttons.Add(temp);
                 tempGuideBallList.Clear();
+                currSection++;
             }
         }
     }
