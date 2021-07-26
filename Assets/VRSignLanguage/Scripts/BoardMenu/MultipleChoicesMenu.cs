@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Video;
@@ -45,7 +46,8 @@ public class MultipleChoicesMenu : MonoBehaviour, IBoardMenu
 			}
 			isInitalized = true;
 		}
-		currSection = (List<GuideBall>)arguments[0];
+		//currSection = (List<GuideBall>)arguments[0];
+		currSection = ((IEnumerable<object>)arguments[0]).Cast<GuideBall>().ToList();
 
 		SectionRandomizer();
 		PrepareQuestion(currQuestionIndex);
