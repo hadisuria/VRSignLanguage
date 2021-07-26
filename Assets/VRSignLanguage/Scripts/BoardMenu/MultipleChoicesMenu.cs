@@ -48,6 +48,7 @@ public class MultipleChoicesMenu : MonoBehaviour, IBoardMenu
 			isInitalized = true;
 		}
 
+		Debug.Log("Current Section MCMENU: " + currSection.Count);
 		currSection = WordSectionControl.wordSections[(int)arguments[0]];
 
 		SectionRandomizer();
@@ -75,7 +76,6 @@ public class MultipleChoicesMenu : MonoBehaviour, IBoardMenu
 		answerText.gameObject.SetActive(true);
 
 		previewMenu.Show();
-		Debug.Log("Current Section MCMENU: " + currSection.Count);
 		previewMenu.Initialize(currSection[currQuestionIndex]);
 	}
 
@@ -98,7 +98,7 @@ public class MultipleChoicesMenu : MonoBehaviour, IBoardMenu
 		List<string> tempString = new List<string>();
 		tempString.Add(tempSection[index].word);
 		tempSection.RemoveAt(index);
-		Debug.Log("TempSectionCount" + tempSection);
+		Debug.Log("TempSectionCount" + tempSection.Count);
 		int randomIndex;
 		for(int i = 1; i < choicesButtons.Count; i++)
 		{	
