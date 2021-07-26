@@ -46,8 +46,7 @@ public class MultipleChoicesMenu : MonoBehaviour, IBoardMenu
 			}
 			isInitalized = true;
 		}
-		//currSection = arguments[0] as List<GuideBall>;
-		currSection = (arguments[0] as IEnumerable<GuideBall>).Cast<GuideBall>().ToList();
+		currSection = (List<GuideBall>)arguments[0];
 
 		SectionRandomizer();
 		PrepareQuestion(currQuestionIndex);
@@ -128,11 +127,12 @@ public class MultipleChoicesMenu : MonoBehaviour, IBoardMenu
 	private void SectionRandomizer()
 	{
 		List<GuideBall> temp = new List<GuideBall>();
-		for(int i = currSection.Count; i >= 0; i--)
+		for(int i = currSection.Count - 1; i >= 0; i--)
 		{
-			GuideBall tempData = currSection[UnityEngine.Random.Range(0, currSection.Count)];
+			int randomIndex = UnityEngine.Random.Range(0, currSection.Count);
+			GuideBall tempData = currSection[randomIndex];
 			temp.Add(tempData);
-			currSection.Remove(tempData);
+			currSection.RemoveAt(randomIndex);
 		}
 		currSection.Clear();
 		currSection = AddSpacedRepetition(temp);
