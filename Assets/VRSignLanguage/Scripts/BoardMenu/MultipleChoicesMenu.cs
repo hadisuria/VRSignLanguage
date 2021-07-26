@@ -46,7 +46,7 @@ public class MultipleChoicesMenu : MonoBehaviour, IBoardMenu
 			}
 			isInitalized = true;
 		}
-		Debug.Log("object type : " + arguments[0].GetType());
+		Debug.Log("object type : " + ((List<GuideBall>)arguments[0]).Count);
 		currSection = (List<GuideBall>)arguments[0];
 		Debug.Log("Curr Section Count : " + currSection.Count);
 		for (int i = 0; i < currSection.Count; i++)
