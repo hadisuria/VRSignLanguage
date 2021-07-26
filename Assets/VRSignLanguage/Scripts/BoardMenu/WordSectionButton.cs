@@ -9,7 +9,7 @@ public class WordSectionButton : MonoBehaviour
 	private ButtonEvent button;
     //private List<GuideBall> section = new List<GuideBall>();
     private int section;
-	private SectionData mySection = new SectionData();
+	private SectionData mySection;
 
 	private BoardMenuController menuController;
 
