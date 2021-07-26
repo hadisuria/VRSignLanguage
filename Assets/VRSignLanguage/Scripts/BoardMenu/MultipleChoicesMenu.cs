@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
@@ -47,13 +48,15 @@ public class MultipleChoicesMenu : MonoBehaviour, IBoardMenu
 			isInitalized = true;
 		}
 		//Debug.Log("Arguments Length: " + arguments.Length + "\nArguments Isi: " + JsonUtility.ToJson(arguments[0]));
-		var temp = arguments[0] as IList<GuideBall>;
+		IList temp = arguments[0] as IList;
 		Debug.Log("List count : " + temp.Count);
 		foreach(var data in temp)
 		{
-			Debug.Log("word : " + data.word);
-			currSection.Add(data);
+			Debug.Log("word : " + ((GuideBall)data).word);
+			currSection.Add((GuideBall)data);
+			Debug.Log("currSection list count : " + currSection.Count());
 		}
+		currSection = ((IEnumerable)arguments[0]).Cast<GuideBall>().ToList();
 
 		//currSection = (List<GuideBall>)arguments[0];
 		Debug.Log("Curr Section Count : " + currSection.Count);
