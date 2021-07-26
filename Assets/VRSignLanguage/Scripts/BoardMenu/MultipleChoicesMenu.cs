@@ -22,7 +22,7 @@ public class MultipleChoicesMenu : MonoBehaviour, IBoardMenu
 	[SerializeField] private SignLanguagePreviewMenu previewMenu;
 
 	private bool isInitalized = false;
-	private SectionData currSection = new SectionData();
+	private SectionData currSection;
 	private int currQuestionIndex = 0;
 
 	public void Hide()
