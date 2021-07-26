@@ -46,9 +46,16 @@ public class MultipleChoicesMenu : MonoBehaviour, IBoardMenu
 			}
 			isInitalized = true;
 		}
-		Debug.Log("Arguments Length: " + arguments.Length + "\nArguments Isi: " + JsonUtility.ToJson(arguments[0]));
-		Debug.Log("object type : " + ((List<GuideBall>)arguments[0]).Count);
-		currSection = (List<GuideBall>)arguments[0];
+		//Debug.Log("Arguments Length: " + arguments.Length + "\nArguments Isi: " + JsonUtility.ToJson(arguments[0]));
+		var temp = arguments[0] as IList<GuideBall>;
+		Debug.Log("List count : " + temp.Count);
+		foreach(var data in temp)
+		{
+			Debug.Log("word : " + data.word);
+			currSection.Add(data);
+		}
+
+		//currSection = (List<GuideBall>)arguments[0];
 		Debug.Log("Curr Section Count : " + currSection.Count);
 		for (int i = 0; i < currSection.Count; i++)
 		{
