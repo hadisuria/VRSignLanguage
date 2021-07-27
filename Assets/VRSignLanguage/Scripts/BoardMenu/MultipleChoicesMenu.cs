@@ -94,7 +94,7 @@ public class MultipleChoicesMenu : MonoBehaviour, IBoardMenu
 		videoPlayer.Play();
 
 		// prepare choices buttons
-		List<GuideBall> tempSection = currSection;
+		List<GuideBall> tempSection = new List<GuideBall>(currSection);
 		List<string> tempString = new List<string>();
 		tempString.Add(tempSection[index].word);
 		tempSection.RemoveAt(index);
