@@ -135,7 +135,7 @@ public class MultipleChoicesMenu : MonoBehaviour, IBoardMenu
 		for(int i = currSection.Count - 1; i >= 0; i--)
 		{
 			int randomIndex = UnityEngine.Random.Range(0, currSection.Count);
-			GuideBall tempData = currSection[randomIndex];
+			GuideBall tempData = new GuideBall(currSection[randomIndex].word, currSection[randomIndex].leftHandPath, currSection[randomIndex].rightHandPath);
 			temp.Add(tempData);
 			currSection.RemoveAt(randomIndex);
 		}
