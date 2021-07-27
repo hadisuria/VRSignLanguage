@@ -140,8 +140,7 @@ public class MultipleChoicesMenu : MonoBehaviour, IBoardMenu
 			currSection.RemoveAt(randomIndex);
 		}
 		currSection.Clear();
-		// currSection = AddSpacedRepetition(temp);
-		currSection = temp;
+		currSection = AddSpacedRepetition(temp);
 		Debug.Log( "Data count after random : " + currSection.Count);
 	}
 
