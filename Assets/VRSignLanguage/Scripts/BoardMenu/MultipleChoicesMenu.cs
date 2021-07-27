@@ -113,7 +113,7 @@ public class MultipleChoicesMenu : MonoBehaviour, IBoardMenu
 			// remove choosen list index from the temporary section list to prevent same choice later
 			tempSection.RemoveAt(randomIndex);
 		}
-
+		Debug.Log("Data count after preparing : " + currSection.Count);
 		for (int i = 0; i < choicesButtons.Count; i++)
 		{
 			randomIndex = UnityEngine.Random.Range(0, tempString.Count);
@@ -142,6 +142,7 @@ public class MultipleChoicesMenu : MonoBehaviour, IBoardMenu
 		currSection.Clear();
 		// currSection = AddSpacedRepetition(temp);
 		currSection = temp;
+		Debug.Log( "Data count after random : " + currSection.Count);
 	}
 
 
