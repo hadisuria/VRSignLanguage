@@ -101,10 +101,10 @@ public class MultipleChoicesMenu : MonoBehaviour, IBoardMenu
 		for(int i = 1; i < choicesButtons.Count; i++)
 		{	
 			// find random index that doesn't exist in tempString
-			// do{
+			do{
 				randomIndex = UnityEngine.Random.Range(0, tempSection.Count);
 				Debug.Log("Random Index " + i + " : " + randomIndex);
-			// } while(!tempString.Exists(e => e.Equals(tempSection[randomIndex].word)));
+			} while(tempString.Exists(e => e.Equals(tempSection[randomIndex].word)));
 			
 			// Add choosen random string to temporary string list
 			tempString.Add(tempSection[randomIndex].word);
@@ -138,8 +138,8 @@ public class MultipleChoicesMenu : MonoBehaviour, IBoardMenu
 			currSection.RemoveAt(randomIndex);
 		}
 		currSection.Clear();
-		// currSection = AddSpacedRepetition(temp);
-		currSection = temp;
+		currSection = AddSpacedRepetition(temp);
+		// currSection = temp;
 	}
 
 
