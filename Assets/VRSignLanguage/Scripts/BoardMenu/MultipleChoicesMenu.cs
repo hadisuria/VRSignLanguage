@@ -166,6 +166,7 @@ public class MultipleChoicesMenu : MonoBehaviour, IBoardMenu
 
 	private void NextButton_OnButtonClicked()
 	{
+		Debug.Log( "Total Data Count :" + currSection.Count);
 		currQuestionIndex++;
 		if(currQuestionIndex == currSection.Count)
 		{
