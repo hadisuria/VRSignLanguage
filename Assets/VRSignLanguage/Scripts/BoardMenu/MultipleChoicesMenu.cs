@@ -73,6 +73,7 @@ public class MultipleChoicesMenu : MonoBehaviour, IBoardMenu
 			answerText.text = "Your Answer is Incorrect!!! \n\n Correct Answer :\n" + currSection[currQuestionIndex].word;
 		}
 		answerText.gameObject.SetActive(true);
+		nextButton.gameObject.SetActive(true);
 
 		previewMenu.Show();
 		previewMenu.Initialize(currSection[currQuestionIndex]);
