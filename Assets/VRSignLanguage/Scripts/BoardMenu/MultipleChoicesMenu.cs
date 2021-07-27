@@ -26,6 +26,7 @@ public class MultipleChoicesMenu : MonoBehaviour, IBoardMenu
 	public void Hide()
 	{
 		gameObject.SetActive(false);
+		currQuestionIndex = 0;
 	}
 
 	public void Show()
@@ -114,7 +115,7 @@ public class MultipleChoicesMenu : MonoBehaviour, IBoardMenu
 
 		for (int i = 0; i < choicesButtons.Count; i++)
 		{
-			randomIndex = UnityEngine.Random.Range(0, tempSection.Count);
+			randomIndex = UnityEngine.Random.Range(0, tempString.Count);
 			choicesButtons[i].SetText(tempString[randomIndex]);
 			tempString.RemoveAt(randomIndex);
 
@@ -138,8 +139,8 @@ public class MultipleChoicesMenu : MonoBehaviour, IBoardMenu
 			currSection.RemoveAt(randomIndex);
 		}
 		currSection.Clear();
-		currSection = AddSpacedRepetition(temp);
-		// currSection = temp;
+		// currSection = AddSpacedRepetition(temp);
+		currSection = temp;
 	}
 
 
