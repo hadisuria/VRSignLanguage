@@ -39,6 +39,5 @@ public class WordSectionButton : MonoBehaviour
 	{
 		section = value;
         //section = value;
-		Debug.Log("section count : " + value.Count + " ===== " + section.Count);
 	}
 }

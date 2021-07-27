@@ -13,7 +13,6 @@ public class WordListControl : MonoBehaviour
 
         //test debug
         ResetData();
-        Debug.Log("(Generating WordList) Game manager" + gameManager.languageDictionary.guideBallDataList.Count);
         if (gameManager == null)
             gameManager = FindObjectOfType<GameManager>();
 

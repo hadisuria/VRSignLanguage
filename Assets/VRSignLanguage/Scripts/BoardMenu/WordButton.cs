@@ -30,6 +30,5 @@ public class WordButton : MonoBehaviour
     private void OnWordClicked(){
         //wordListControl.ButtonClick(myTextString);
         menuController.OpenMenu(BoardMenuID.SignLanguagePreview, myGuideBall);
-        Debug.Log("Show Word : " + $"{myGuideBall.word}");
     }
 }

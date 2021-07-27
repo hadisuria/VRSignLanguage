@@ -33,8 +33,6 @@ public class WordSectionControl : MonoBehaviour
             if ((i + 1) % dataPerSection == 0)
             {
                 wordSections.Add(new List<GuideBall>(tempGuideBallList));
-                //Debug.Log("wordSection Count : " + wordSections.Count + " ===== current word section count : " + wordSections[currSection].Count);
-                //Debug.Log("WordSection JSON: " + wordSections[0][0].word);
                 WordSectionButton temp = Instantiate(Resources.Load<GameObject>("WordSectionButton"), transform).GetComponent<WordSectionButton>();
                 temp.gameObject.SetActive(true);
                 temp.Init(wordSections[currSection], $"Section {currSection}");

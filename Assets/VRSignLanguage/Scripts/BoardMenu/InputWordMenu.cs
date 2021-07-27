@@ -64,7 +64,7 @@ public class InputWordMenu : MonoBehaviour, IBoardMenu
 			typedWord.text = "";
 		} else
 		{
-			Debug.Log("Failed to saved guideball data, please input word. . . BLOK");
+			Debug.Log("Failed to saved guideball data, please input word");
 		}
 	}
 

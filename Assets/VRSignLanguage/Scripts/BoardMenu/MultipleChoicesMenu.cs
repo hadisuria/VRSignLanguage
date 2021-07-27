@@ -48,7 +48,6 @@ public class MultipleChoicesMenu : MonoBehaviour, IBoardMenu
 		}
 
 		currSection = new List<GuideBall>( (List<GuideBall>) arguments[0]);
-		Debug.Log("Current Section MCMENU: " + currSection.Count);
 
 		SectionRandomizer();
 		PrepareQuestion(currQuestionIndex);
@@ -98,14 +97,13 @@ public class MultipleChoicesMenu : MonoBehaviour, IBoardMenu
 		List<string> tempString = new List<string>();
 		tempString.Add(tempSection[index].word);
 		tempSection.RemoveAt(index);
-		Debug.Log("TempSectionCount" + tempSection.Count);
+
 		int randomIndex;
 		for(int i = 1; i < choicesButtons.Count; i++)
 		{	
 			// find random index that doesn't exist in tempString
 			do{
 				randomIndex = UnityEngine.Random.Range(0, tempSection.Count);
-				Debug.Log("Random Index " + i + " : " + randomIndex);
 			} while(tempString.Exists(e => e.Equals(tempSection[randomIndex].word)));
 			
 			// Add choosen random string to temporary string list
@@ -113,7 +111,6 @@ public class MultipleChoicesMenu : MonoBehaviour, IBoardMenu
 			// remove choosen list index from the temporary section list to prevent same choice later
 			tempSection.RemoveAt(randomIndex);
 		}
-		Debug.Log("Data count after preparing : " + currSection.Count);
 		for (int i = 0; i < choicesButtons.Count; i++)
 		{
 			randomIndex = UnityEngine.Random.Range(0, tempString.Count);
@@ -166,7 +163,6 @@ public class MultipleChoicesMenu : MonoBehaviour, IBoardMenu
 
 	private void NextButton_OnButtonClicked()
 	{
-		Debug.Log( "Total Data Count :" + currSection.Count);
 		currQuestionIndex++;
 		if(currQuestionIndex == currSection.Count)
 		{
