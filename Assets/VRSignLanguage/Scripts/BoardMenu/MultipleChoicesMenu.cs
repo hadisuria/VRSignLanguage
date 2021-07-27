@@ -72,6 +72,7 @@ public class MultipleChoicesMenu : MonoBehaviour, IBoardMenu
 			answerText.text = "Your Answer is Incorrect!!! \n\n Correct Answer :\n" + currSection[currQuestionIndex].word;
 		}
 		answerText.gameObject.SetActive(true);
+		nextButton.gameObject.SetActive(true);
 
 		previewMenu.Show();
 		previewMenu.Initialize(currSection[currQuestionIndex]);
@@ -114,7 +115,7 @@ public class MultipleChoicesMenu : MonoBehaviour, IBoardMenu
 
 		for (int i = 0; i < choicesButtons.Count; i++)
 		{
-			randomIndex = UnityEngine.Random.Range(0, tempSection.Count);
+			randomIndex = UnityEngine.Random.Range(0, tempString.Count);
 			choicesButtons[i].SetText(tempString[randomIndex]);
 			tempString.RemoveAt(randomIndex);
 
