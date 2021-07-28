@@ -23,6 +23,9 @@ public class MainMenu : MonoBehaviour, IBoardMenu
 			inputWordButton.OnButtonClicked += InputWordButton_OnButtonHit; ;
 			exitButton.OnButtonClicked += ExitGame;
 			initalized = true;
+#if !UNITY_EDITOR
+			inputWordButton.gameObject.SetActive(false);
+#endif
 		}
 	}
 

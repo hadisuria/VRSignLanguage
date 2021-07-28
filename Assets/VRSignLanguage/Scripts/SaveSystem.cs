@@ -9,7 +9,11 @@ public static class SaveSystem
     public static readonly string SAVE_CALIBRATION = "SavedCalibration.json";
     public static readonly string SAVE_SIGN_LANGUAGE_DICTIONARY = "SavedSignLanguageDictionary.json";
 
+#if UNITY_EDITOR
     public static readonly string SAVE_FOLDER = Application.dataPath + "/Saves/";
+#else
+    public static readonly string SAVE_FOLDER = Application.persistentDataPath + "/Saves/";
+#endif
     public static void Init()
 	{
         // check if save folder exist 
@@ -31,6 +35,14 @@ public static class SaveSystem
 
     public static string LoadData(string fileName)
     {
+#if !UNITY_EDITOR
+        if(fileName == SAVE_SIGN_LANGUAGE_DICTIONARY)
+		{
+            var dataText = Resources.Load<TextAsset>("SavedSignLanguageDictionary"));
+            string saveString = File.ReadAllText(dataText.text);
+            return saveString;
+		}else
+#endif
         if (File.Exists(SAVE_FOLDER + fileName))
         {
             string saveString = File.ReadAllText(SAVE_FOLDER + fileName);
