@@ -38,7 +38,7 @@ public static class SaveSystem
 #if !UNITY_EDITOR
         if(fileName == SAVE_SIGN_LANGUAGE_DICTIONARY)
 		{
-            var dataText = Resources.Load<TextAsset>("SavedSignLanguageDictionary"));
+            var dataText = Resources.Load<TextAsset>("SavedSignLanguageDictionary");
             string saveString = File.ReadAllText(dataText.text);
             return saveString;
 		}else
