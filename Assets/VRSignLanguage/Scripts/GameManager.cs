@@ -212,7 +212,6 @@ public class GameManager : MonoBehaviour
 		// index 4 = right shoulder indicator
 		keyPositions[4].position = new Vector3(keyPositions[0].position.x + rightShoulderOffset.x, rightShoulderOffset.y, keyPositions[0].position.z);
 #else
-		keyPositions[0].gameObject.SetActive(false);
 		keyPositions[1].gameObject.SetActive(false);
 		keyPositions[2].gameObject.SetActive(false);
 		keyPositions[3].gameObject.SetActive(false);
