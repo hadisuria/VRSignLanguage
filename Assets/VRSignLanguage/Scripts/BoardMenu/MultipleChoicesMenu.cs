@@ -73,6 +73,7 @@ public class MultipleChoicesMenu : MonoBehaviour, IBoardMenu
 		}
 		answerText.gameObject.SetActive(true);
 		nextButton.gameObject.SetActive(true);
+		videoPlayer.Stop();
 
 		previewMenu.Show();
 		previewMenu.Initialize(currSection[currQuestionIndex]);

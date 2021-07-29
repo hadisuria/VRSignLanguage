@@ -57,7 +57,7 @@ public class SignLanguagePreviewMenu : MonoBehaviour, IBoardMenu
 		try
 		{
 			videoPlayer.clip = Resources.Load<VideoClip>("Video/" + targetGuideBall.word);
-
+			videoPlayer.isLooping = true;
 			videoPlayer.Play();
 		}
 		catch (Exception e)
