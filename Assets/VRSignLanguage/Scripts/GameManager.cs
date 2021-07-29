@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
 	private bool prevInputHandlerPrimaryButtonRight = false;
 	public static bool isRayActive { get; private set; }
 	[SerializeField] private VRInputModule vrInputModule;
+	public event Action OnFinishCalibrate;
 
 	//calibrated data
 	public float maxHandDistance { get; private set; }
@@ -194,7 +195,9 @@ public class GameManager : MonoBehaviour
 			);
 
 		SaveCalibratedData(savedCalibratedData);
+		OnFinishCalibrate?.Invoke();
 
+#if UNITY_EDITOR
 		// visualize calibrated pos using simple game object
 		// index 0 = player hmd pos
 		// index 1 = head indicator
@@ -208,6 +211,13 @@ public class GameManager : MonoBehaviour
 
 		// index 4 = right shoulder indicator
 		keyPositions[4].position = new Vector3(keyPositions[0].position.x + rightShoulderOffset.x, rightShoulderOffset.y, keyPositions[0].position.z);
+#else
+		keyPositions[0].gameObject.SetActive(false);
+		keyPositions[1].gameObject.SetActive(false);
+		keyPositions[2].gameObject.SetActive(false);
+		keyPositions[3].gameObject.SetActive(false);
+		keyPositions[4].gameObject.SetActive(false);
+#endif
 	}
 
 	private void OnDestroy()

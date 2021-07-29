@@ -15,6 +15,9 @@ public class CalibrateMenuController : MonoBehaviour, IBoardMenu
 	[SerializeField] private ButtonEvent closeButton;
 
 	private GameManager gameManager;
+	private bool notifOn = false;
+	[SerializeField] private GameObject calibrateNotif;
+	private float notifTime = 0f;
 
 	//void Start()
  //   {
@@ -44,8 +47,15 @@ public class CalibrateMenuController : MonoBehaviour, IBoardMenu
 		if (!initialized)
 		{
 			closeButton.OnButtonClicked += CloseButton_OnButtonHit;
+			gameManager.OnFinishCalibrate += GameManager_OnFinishCalibrate;
 			initialized = true;
 		}
+	}
+
+	private void GameManager_OnFinishCalibrate()
+	{
+		notifOn = true;
+		calibrateNotif.SetActive(true);
 	}
 
 	private void CloseButton_OnButtonHit()
@@ -71,6 +81,9 @@ public class CalibrateMenuController : MonoBehaviour, IBoardMenu
 	{
 		//isActive = false;
 		gameObject.SetActive(false);
+		calibrateNotif.SetActive(false);
+		notifOn = false;
+		notifTime = 0f;
 	}
 
 	private void Awake()
@@ -82,6 +95,17 @@ public class CalibrateMenuController : MonoBehaviour, IBoardMenu
 	{
 		if (gameManager.savedCalibratedData != null)
 			closeButton.gameObject.SetActive(true);
+
+		if (notifOn)
+		{
+			notifTime += Time.deltaTime;
+			if(notifTime > 2f)
+			{
+				calibrateNotif.SetActive(false);
+				notifOn = false;
+				notifTime = 0f;
+			}
+		}
 	}
 
 	private void OnDestroy()
