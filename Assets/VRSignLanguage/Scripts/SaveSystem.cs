@@ -12,7 +12,7 @@ public static class SaveSystem
 #if UNITY_EDITOR
     public static readonly string SAVE_FOLDER = Application.dataPath + "/Saves/";
 #else
-    public static readonly string SAVE_FOLDER = Application.persistentDataPath + "/Saves/";
+    public static string SAVE_FOLDER { get{ return Application.persistentDataPath + "/Saves/";}}
 #endif
     public static void Init()
 	{

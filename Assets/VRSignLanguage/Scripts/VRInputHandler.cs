@@ -36,17 +36,21 @@ public class VRInputHandler : MonoBehaviour
 		rightController.SetGripButton(OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger, OVRInput.Controller.RTouch));
 		rightController.SetThumbTouchValue(OVRInput.Get(OVRInput.Touch.PrimaryThumbstick, OVRInput.Controller.RTouch));
 
-		//text for current input received
-		inputText.text = $"Left Thumb 1 : {leftController.primaryButton} \nLeft Thumb 2 : {leftController.secondaryButton} \nLeft Index Trigger : {leftController.triggerButton} \nLeft Hand Trigger : {leftController.gripButton} \nLeft Controller Pos : {leftController.controllerPos}" +
-						$"\nRight Thumb 1 : {rightController.primaryButton} \nRight Thumb 2 : {rightController.secondaryButton} \nRight Index Trigger : {rightController.triggerButton} \nRight Hand Trigger : {rightController.gripButton} \nRight Controller Pos : {rightController.controllerPos}";
-
 		//set each hand gestures
 		leftController.SetHandGestures(GetHandGestures(leftController.primaryButton, leftController.triggerButton, leftController.gripButton));
 		rightController.SetHandGestures(GetHandGestures(rightController.primaryButton, rightController.triggerButton, rightController.gripButton));
 
+#if UNITY_EDITOR
+		//text for current input received
+		inputText.text = $"Left Thumb 1 : {leftController.primaryButton} \nLeft Thumb 2 : {leftController.secondaryButton} \nLeft Index Trigger : {leftController.triggerButton} \nLeft Hand Trigger : {leftController.gripButton} \nLeft Controller Pos : {leftController.controllerPos}" +
+						$"\nRight Thumb 1 : {rightController.primaryButton} \nRight Thumb 2 : {rightController.secondaryButton} \nRight Index Trigger : {rightController.triggerButton} \nRight Hand Trigger : {rightController.gripButton} \nRight Controller Pos : {rightController.controllerPos}";
+
 		//text for current hand gestures
 		gestureText.text = "Left Hand : " + leftController.handGestures.ToString() + "\nRight Hand : " + rightController.handGestures.ToString();
-
+#else
+		inputText.gameObject.SetActive(false);
+		gestureText.gameObject.SetActive(false);
+#endif
 		//action to give current controller input
 		//LeftControllerInput.Invoke(leftController);
 		//RightControllerInput.Invoke(rightController);
