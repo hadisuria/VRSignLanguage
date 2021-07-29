@@ -40,7 +40,7 @@ public class WordSectionControl : MonoBehaviour
                 wordSections.Add(new List<GuideBall>(tempGuideBallList));
                 WordSectionButton temp = Instantiate(Resources.Load<GameObject>("WordSectionButton"), transform).GetComponent<WordSectionButton>();
                 temp.gameObject.SetActive(true);
-                temp.Init(wordSections[currSection], $"Section {((Sections)currSection).ToString().Replace('_', ' ')}");
+                temp.Init(wordSections[currSection], $"{((Sections)currSection).ToString().Replace('_', ' ')}");
                 buttons.Add(temp);
                 tempGuideBallList.Clear();
                 currSection++;
