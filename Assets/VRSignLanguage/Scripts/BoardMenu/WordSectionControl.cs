@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class WordSectionControl : MonoBehaviour
 {
+    private enum Sections
+	{
+        Daily_Usage
+	}
+
     private List<WordSectionButton> buttons = new List<WordSectionButton>();
     [SerializeField] private int dataPerSection = 5;
 
@@ -35,7 +40,7 @@ public class WordSectionControl : MonoBehaviour
                 wordSections.Add(new List<GuideBall>(tempGuideBallList));
                 WordSectionButton temp = Instantiate(Resources.Load<GameObject>("WordSectionButton"), transform).GetComponent<WordSectionButton>();
                 temp.gameObject.SetActive(true);
-                temp.Init(wordSections[currSection], $"Section {currSection}");
+                temp.Init(wordSections[currSection], $"Section {((Sections)currSection).ToString().Replace('_', ' ')}");
                 buttons.Add(temp);
                 tempGuideBallList.Clear();
                 currSection++;
